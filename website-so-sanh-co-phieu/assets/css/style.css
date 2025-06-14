@@ -100,16 +100,19 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 45px;
-	width: 100%;
+	width: 768px;
+	margin: 0 auto;
+	gap: 30px;
 }
 
 .section-filter .filter-item {
-	width: 30%;
+	width: 50%;
+	max-width: calc(50% - 15px);
 	position: relative;
 	display: flex;
 	align-items: center;
 	gap: 6px;
+	flex-shrink: 0;
 }
 
 .section-filter .filter-item .filter-item_title {
@@ -118,7 +121,11 @@ body {
 	flex-shrink: 0;
 }
 
-.section-filter .filter-item .filter-item_select,
+.section-filter .filter-item .filter-item_select {
+	flex: 1;
+	min-width: 0;
+}
+
 .section-filter .filter-item .filter-item_select .select2-container {
 	width: 100%;
 }
@@ -195,6 +202,74 @@ body {
 	color: var(--color-text-white);
 }
 
+.section-filter .filter-item .filter-item_select .select2-container--default .select2-selection--multiple {
+	position: relative;
+	padding-right: 30px;
+	cursor: pointer;
+	background: #14121a;
+	border: 1px solid #3f4160;
+	height: 36px;
+	padding-left: 2px;
+}
+
+.section-filter .filter-item .filter-item_select .select2-container--default .select2-selection--multiple:before {
+	border-color: #888 transparent transparent transparent;
+	border-style: solid;
+	border-width: 5px 4px 0 4px;
+	height: 0;
+	right: 10px;
+	margin-left: -4px;
+	margin-top: -2px;
+	position: absolute;
+	top: 50%;
+	width: 0;
+	display: block;
+	content: "";
+}
+
+.section-filter .filter-item .filter-item_select .select2-container--default.select2-container--open .select2-selection--multiple:before {
+	transform: rotate(180deg);
+}
+
+.section-filter .filter-item .filter-item_select .select2-container--default .select2-selection--multiple .select2-selection__choice {
+	background: rgba(229, 229, 229, 0.1);
+	border-color: rgba(229, 229, 229, 0.1);
+	color: var(--color-text-white);
+	white-space: nowrap;
+}
+
+.section-filter .filter-item .filter-item_select .select2-container--default .select2-search--inline .select2-search__field {
+	color: var(--color-text-white);
+	margin-top: 9px;
+}
+
+.section-filter .filter-item .filter-item_select .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+	color: var(--color-text-white);
+}
+
+.section-filter .filter-item .filter-item_select .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+	max-width: 100%;
+	overflow-y: hidden;
+	overflow-x: auto;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	white-space: normal;
+}
+
+.section-filter .filter-item .filter-item_select .select2-container--default .select2-selection--multiple .select2-selection__rendered::-webkit-scrollbar {
+	height: 5px;
+}
+
+.section-filter .filter-item .filter-item_select .select2-container--default .select2-selection--multiple .select2-selection__rendered::-webkit-scrollbar-track {
+	background: #201e25;
+}
+
+.section-filter .filter-item .filter-item_select .select2-container--default .select2-selection--multiple .select2-selection__rendered::-webkit-scrollbar-thumb {
+	background: #333131;
+	border-radius: 50px;
+}
+
 .section-chart {
 	padding-top: 50px;
 }
@@ -204,8 +279,21 @@ body {
 	font-weight: 700;
 	color: var(--color-text-white);
 	text-align: center;
-	margin-bottom: 30px;
 }
+
+.section-chart .chart-desc {
+	margin-top: 3px;
+	margin-bottom: 30px;
+	font-size: 1.075em;
+	color: var(--color-text-secondary);
+	text-align: center;
+}
+
+.section-chart .chart-desc b,
+.section-chart .chart-desc strong {
+	color: var(--color-text-white);
+}
+
 
 .section-chart .chart-preview {
 	padding: 30px 30px 0;
@@ -226,12 +314,12 @@ body {
 .section-description .description-text {
 	font-size: 1.075em;
 	color: var(--color-text-secondary);
-	margin-top: 8px ;
+	margin-top: 8px;
 }
 
 .section-description .description-text p,
 .section-description .description-text ol,
-.section-description .description-text ul{
+.section-description .description-text ul {
 	margin-bottom: 8px;
 	margin-top: 0;
 }
@@ -243,7 +331,11 @@ body {
 }
 
 .section-description .description-text b,
-.section-description .description-text strong{
+.section-description .description-text strong {
 	color: var(--color-text-white);
 }
 
+.section-item + .section-item {
+	border-top: 1px solid #3b3a3a60;
+	margin-top: 50px;
+}
