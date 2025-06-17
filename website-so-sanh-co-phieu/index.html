@@ -24,6 +24,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	      rel="stylesheet">
 
+	<link rel="stylesheet" href="./assets/libs/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./assets/libs/select2/css/select2.min.css">
 	<link rel="stylesheet" href="./assets/css/style.css?ver=1">
 
@@ -82,7 +83,14 @@
 				</div>
 				<div class="filter-item">
 					<div class="filter-item_title">
-						Lựa chọn mã CP
+						Nhập hoặc Chọn mã CP
+						<button type="button" class="button-tooltip" data-bs-toggle="tooltip"
+						        data-bs-title="Để so sánh hoạt động, vui lòng chọn 2 cổ phiếu">
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+								<path
+									d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2Zm-.75 6c0-.41.34-.75.75-.75s.75.34.75.75v5c0 .41-.34.75-.75.75s-.75-.34-.75-.75V8Zm1.67 8.38c-.05.13-.12.23-.21.33-.1.09-.21.16-.33.21-.12.05-.25.08-.38.08s-.26-.03-.38-.08-.23-.12-.33-.21c-.09-.1-.16-.2-.21-.33A.995.995 0 0 1 11 16c0-.13.03-.26.08-.38s.12-.23.21-.33c.1-.09.21-.16.33-.21a1 1 0 0 1 .76 0c.12.05.23.12.33.21.09.1.16.21.21.33.05.12.08.25.08.38s-.03.26-.08.38Z"></path>
+							</svg>
+						</button>
 					</div>
 					<div class="filter-item_select">
 						<select name="" id="filterStock" data-search="Tìm kếm mã cổ phiếu" data-wrapper multiple>
@@ -113,91 +121,60 @@
 						</select>
 					</div>
 				</div>
-			</div>
-			<div class="section-item">
-				<div class="section-chart">
-					<div class="chart-title">
-						Tăng trưởng doanh thu theo quý
-					</div>
-					<div class="chart-desc">
-						Biểu đồ so sánh tăng trưởng theo quý của các mã cổ phiếu <strong>ACB</strong>,
-						<strong>MBB</strong>, <strong>TCG</strong>
-					</div>
-					<canvas id="chartPreview" class="chart-preview"></canvas>
-				</div>
-				<div class="section-description">
-					<div class="description-title">
-						Báo cáo kết quả kinh doanh là gì?
-					</div>
-					<div class="description-text">
-						<p>
-							<strong>Báo cáo kết quả kinh doanh</strong> là một phần quan trọng của
-							<a href="#">Báo cáo tài chính</a>, phản ánh tổng hợp chi tiết về
-							<strong>Doanh thu</strong>, <strong>Chi phí</strong>, và
-							<strong>Lợi nhuận</strong> của doanh nghiệp trong kỳ báo cáo.
-						</p>
-						<p>
-							Báo cáo này còn được gọi là <strong>Profit and Loss Statement</strong>
-							(viết tắt là P&amp;L).
-						</p>
-					</div>
+				<div class="filter-item filter-item_button">
+					<button type="button" class="button-theme">
+						Bắt đầu so sánh
+					</button>
 				</div>
 			</div>
 			<div class="section-item">
 				<div class="section-chart">
 					<div class="chart-title">
-						Biên độ lợi nhuận
+						So sánh số liệu báo cáo tài chính giữa VND và SSI
 					</div>
-					<div class="chart-desc">
-						Biểu đồ lợi nhuận theo quý của các mã cổ phiếu <strong>ACB</strong>,
-						<strong>MBB</strong>, <strong>TCG</strong>
+					<div class="chart-button">
+						<button type="button" class="button-theme button-theme_sm active">
+							Theo quý
+						</button>
+						<button type="button" class="button-theme_secondary button-theme_sm">
+							Theo năm
+						</button>
 					</div>
-					<canvas id="chartPreview2" class="chart-preview"></canvas>
-				</div>
-				<div class="section-description">
-					<div class="description-title">
-						Biên độ lợi nhuận là gì?
-					</div>
-					<div class="description-text">
-						<p>
-							<strong>Biên độ lợi nhuận</strong> là một phần quan trọng của
-							<a href="#">Báo cáo tài chính</a>, phản ánh tổng hợp chi tiết về
-							<strong>Doanh thu</strong>, <strong>Chi phí</strong>, và
-							<strong>Lợi nhuận</strong> của doanh nghiệp trong kỳ báo cáo.
-						</p>
-						<p>
-							Báo cáo này còn được gọi là <strong>Profit and Loss Statement</strong>
-							(viết tắt là P&amp;L).
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="section-item">
-				<div class="section-chart">
-					<div class="chart-title">
-						Biên độ nợ
-					</div>
-					<div class="chart-desc">
-						Biểu đồ nợ theo quý của các mã cổ phiếu <strong>ACB</strong>,
-						<strong>MBB</strong>, <strong>TCG</strong>
-					</div>
-					<canvas id="chartPreview3" class="chart-preview"></canvas>
-				</div>
-				<div class="section-description">
-					<div class="description-title">
-						Biên độ nợ là gì?
-					</div>
-					<div class="description-text">
-						<p>
-							<strong>Biên độ nợ</strong> là một phần quan trọng của
-							<a href="#">Báo cáo tài chính</a>, phản ánh tổng hợp chi tiết về
-							<strong>Doanh thu</strong>, <strong>Chi phí</strong>, và
-							<strong>Lợi nhuận</strong> của doanh nghiệp trong kỳ báo cáo.
-						</p>
-						<p>
-							Báo cáo này còn được gọi là <strong>Profit and Loss Statement</strong>
-							(viết tắt là P&amp;L).
-						</p>
+					<div class="container">
+						<div class="row g-4">
+							<div class="col-lg-6">
+								<canvas id="chartPreview" class="chart-preview"></canvas>
+								<div class="chart-table">
+									<div
+										class="chart-table_header">
+										<div class="chart-table_title">
+											Báo cáo tài chính theo quý
+										</div>
+										<div class="chart-table_list handleEffectTab">
+											<button type="button" class="chart-table_list__button handleEffectTabItem active">Theo Quý</button>
+											<button type="button" class="chart-table_list__button handleEffectTabItem">Theo Năm</button>
+											<div class="chart-table_line handleEffectTabLine"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<canvas id="chartPreview2" class="chart-preview"></canvas>
+								<div class="chart-table">
+									<div
+										class="chart-table_header">
+										<div class="chart-table_title">
+											Báo cáo tài chính theo quý
+										</div>
+										<div class="chart-table_list handleEffectTab">
+											<button type="button" class="chart-table_list__button handleEffectTabItem active">Theo Quý</button>
+											<button type="button" class="chart-table_list__button handleEffectTabItem">Theo Năm</button>
+											<div class="chart-table_line handleEffectTabLine"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -206,6 +183,7 @@
 </div>
 
 <script type="text/javascript" src="./assets/libs/jquery.min.js"></script>
+<script type="text/javascript" src="./assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="./assets/libs/select2/js/select2.min.js"></script>
 <script type="text/javascript" src="./assets/libs/select2/js/select2-searchInputPlaceholder.js"></script>
 <script type="text/javascript" src="./assets/libs/select2/js/select2-vi.min.js"></script>
