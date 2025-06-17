@@ -86,9 +86,10 @@
 						Nhập hoặc Chọn mã CP
 						<button type="button" class="button-tooltip" data-bs-toggle="tooltip"
 						        data-bs-title="Để so sánh hoạt động, vui lòng chọn 2 cổ phiếu">
-							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none">
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+							     fill="none">
 								<path
-									d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2Zm-.75 6c0-.41.34-.75.75-.75s.75.34.75.75v5c0 .41-.34.75-.75.75s-.75-.34-.75-.75V8Zm1.67 8.38c-.05.13-.12.23-.21.33-.1.09-.21.16-.33.21-.12.05-.25.08-.38.08s-.26-.03-.38-.08-.23-.12-.33-.21c-.09-.1-.16-.2-.21-.33A.995.995 0 0 1 11 16c0-.13.03-.26.08-.38s.12-.23.21-.33c.1-.09.21-.16.33-.21a1 1 0 0 1 .76 0c.12.05.23.12.33.21.09.1.16.21.21.33.05.12.08.25.08.38s-.03.26-.08.38Z"></path>
+										d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2Zm-.75 6c0-.41.34-.75.75-.75s.75.34.75.75v5c0 .41-.34.75-.75.75s-.75-.34-.75-.75V8Zm1.67 8.38c-.05.13-.12.23-.21.33-.1.09-.21.16-.33.21-.12.05-.25.08-.38.08s-.26-.03-.38-.08-.23-.12-.33-.21c-.09-.1-.16-.2-.21-.33A.995.995 0 0 1 11 16c0-.13.03-.26.08-.38s.12-.23.21-.33c.1-.09.21-.16.33-.21a1 1 0 0 1 .76 0c.12.05.23.12.33.21.09.1.16.21.21.33.05.12.08.25.08.38s-.03.26-.08.38Z"></path>
 							</svg>
 						</button>
 					</div>
@@ -145,34 +146,62 @@
 							<div class="col-lg-6">
 								<canvas id="chartPreview" class="chart-preview"></canvas>
 								<div class="chart-table">
-									<div
-										class="chart-table_header">
-										<div class="chart-table_title">
-											Báo cáo tài chính theo quý
+									<div class="chart-table_header">
+										<div class="chart-table_header__top">
+											<div class="chart-table_title">
+												Báo cáo tài chính theo quý
+											</div>
+											<div class="chart-table_list handleEffectTab">
+												<button type="button"
+												        class="chart-table_list__button handleEffectTabItem active">
+													Theo Quý
+												</button>
+												<button type="button"
+												        class="chart-table_list__button handleEffectTabItem">Theo Năm
+												</button>
+												<div class="chart-table_line handleEffectTabLine"></div>
+											</div>
 										</div>
-										<div class="chart-table_list handleEffectTab">
-											<button type="button" class="chart-table_list__button handleEffectTabItem active">Theo Quý</button>
-											<button type="button" class="chart-table_list__button handleEffectTabItem">Theo Năm</button>
-											<div class="chart-table_line handleEffectTabLine"></div>
+										<div class="chart-table_header__bottom">
+											<div class="chart-table_money">
+												Đơn vi: triệu đồng
+											</div>
+											<div class="chart-table_time">
+												<button type="button" class="chart-table_time__button buttonPrev">
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+														<path d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+													</svg>
+												</button>
+												<div class="chart-table_time__list">
+													<div class="chart-table_time__list___item">
+														<span>Quý 1/2020</span>
+														<span>Hợp nhất/CKT</span>
+													</div>
+													<div class="chart-table_time__list___item">
+														<span>Quý 2/2020</span>
+														<span>Hợp nhất/CKT</span>
+													</div>
+													<div class="chart-table_time__list___item">
+														<span>Quý 3/2020</span>
+														<span>Hợp nhất/CKT</span>
+													</div>
+													<div class="chart-table_time__list___item">
+														<span>Quý 4/2020</span>
+														<span>Hợp nhất/CKT</span>
+													</div>
+												</div>
+												<button type="button" class="chart-table_time__button buttonNext">
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+														<path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+													</svg>
+												</button>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6">
 								<canvas id="chartPreview2" class="chart-preview"></canvas>
-								<div class="chart-table">
-									<div
-										class="chart-table_header">
-										<div class="chart-table_title">
-											Báo cáo tài chính theo quý
-										</div>
-										<div class="chart-table_list handleEffectTab">
-											<button type="button" class="chart-table_list__button handleEffectTabItem active">Theo Quý</button>
-											<button type="button" class="chart-table_list__button handleEffectTabItem">Theo Năm</button>
-											<div class="chart-table_line handleEffectTabLine"></div>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>
