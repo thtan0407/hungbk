@@ -1,9 +1,9 @@
 ;(function ($) {
 	'use strict';
-	
+
 	const handleFilterSelect = function () {
 		const filterIndustry = $('#filterIndustry');
-		
+
 		if (filterIndustry.length) {
 			filterIndustry.select2({
 				templateResult: function (data, container) {
@@ -19,19 +19,19 @@
 				searchInputPlaceholder: filterIndustry.attr('data-search') ?? '',
 			});
 		}
-		
+
 		const filterStock = $('#filterStock');
-		
+
 		if (filterStock.length) {
-			$.fn.select2.amd.require([ 'select2/i18n/vi' ], function (vi) {
+			$.fn.select2.amd.require(['select2/i18n/vi'], function (vi) {
 				// Ghi đè maximumSelected
 				vi.maximumSelected = function (args) {
 					return "Chỉ được chọn 2 mã cổ phiếu";
 				};
-				
+
 				// Gán lại vào Select2
 				$.fn.select2.defaults.set("language", vi);
-				
+
 				// Gọi select2
 				filterStock.select2({
 					templateResult: function (data, container) {
@@ -50,42 +50,42 @@
 			});
 		}
 	}
-	
+
 	const handleInitialChart = function () {
 		const chartPreview = $('.chart-preview');
 		if (chartPreview.length) {
 			chartPreview.map((idx, item) => {
 				const chart = $(item)[0].getContext('2d');
-				
+
 				const lineChart = new Chart(chart, {
 					type: 'line',
 					data: {
-						labels: [ 'Q1', 'Q2', 'Q3', 'Q4' ],
+						labels: ['Q1', 'Q2', 'Q3', 'Q4'],
 						datasets: [
 							{
 								label: 'PVS',
-								data: [ 30, 28, 24, 20 ],
+								data: [30, 28, 24, 20],
 								borderColor: '#099444',
 								backgroundColor: '#82ffb8',
 								tension: 0.4
 							},
 							{
 								label: 'YEG',
-								data: [ 45, 20, 35, 50 ],
+								data: [45, 20, 35, 50],
 								borderColor: '#0e6096',
 								backgroundColor: '#86cdff',
 								tension: 0.4
 							},
 							{
 								label: 'CTG',
-								data: [ 74, 78, 54, 23 ],
+								data: [74, 78, 54, 23],
 								borderColor: '#85560b',
 								backgroundColor: '#ffcb7f',
 								tension: 0.4
 							},
 							{
 								label: 'VCB',
-								data: [ 80, 66, 78, 92 ],
+								data: [80, 66, 78, 92],
 								borderColor: '#FF6384',
 								backgroundColor: '#FFB1C1',
 								tension: 0.4
@@ -94,14 +94,15 @@
 					},
 					options: {
 						responsive: true,
-						maintainAspectRatio: false,
+						maintainAspectRatio: true,
+						aspectRatio: 1 / 0.75,
 						plugins: {
 							legend: {
 								labels: {
 									color: '#ffffff',
 									padding: 50,
 									font: {
-										size: 15,
+										size: 17,
 										weight: 'bold',
 									},
 								},
@@ -160,23 +161,23 @@
 			})
 		}
 	}
-	
+
 	const handleInitialTooltip = function () {
 		const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-		const tooltipList = [ ...tooltipTriggerList ].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+		const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 	}
-	
+
 	const handleInitialTab = () => {
 		const tabElement = $('.handleEffectTab');
 		if (tabElement.length > 0) {
-			
+
 			tabElement.each(function () {
 				const tabItem = $(this);
-				
+
 				const tabItemBackground = tabItem.find('.handleEffectTabLine');
 				const tabItemButton = tabItem.find('.handleEffectTabItem');
 				const tabItemButtonActive = tabItem.find('.handleEffectTabItem.active')[0];
-				
+
 				if (tabItemButtonActive != null) {
 					setTimeout(() => {
 						tabItemBackground.css({
@@ -185,7 +186,7 @@
 							opacity: 1
 						});
 					}, 250)
-					
+
 					$(window).resize(function () {
 						tabItemBackground.css({
 							left: parseInt(tabItemButtonActive.offsetLeft) + "px",
@@ -193,18 +194,18 @@
 							opacity: 1
 						});
 					});
-					
+
 					setTimeout(function () {
 						tabItemButton.addClass('is-done');
 						tabItemBackground.addClass('transition-default')
 					}, 300)
-					
+
 					if (tabItemButton.length) {
 						tabItemButton.each(function () {
 							const tabElement = $(this);
 							tabElement.on("click", function () {
 								tabItemButton.removeClass("active");
-								
+
 								tabElement.addClass("active");
 								tabItemBackground.css({
 									left: parseInt(tabElement[0].offsetLeft) + "px",
@@ -218,11 +219,28 @@
 			})
 		}
 	}
-	
+
+	const handleCollapseTable = function () {
+		if ($('.chartCollapseButton').length) {
+			$('.chartCollapseButton').click(function () {
+				const chartCollapseButton = $(this);
+				const chartCollapseButtonText = chartCollapseButton.html();
+				if (chartCollapseButton.parents('.chart-content').find('.collapse').hasClass('show')) {
+					chartCollapseButton.parents('.chart-content').find('.collapse').collapse('hide');
+					chartCollapseButton.html(chartCollapseButtonText);
+				} else {
+					chartCollapseButton.parents('.chart-content').find('.collapse').collapse('show');
+					chartCollapseButton.html('Thu gọn');
+				}
+			});
+		}
+	}
+
 	$(document).ready(function () {
 		handleFilterSelect();
 		handleInitialChart();
 		handleInitialTooltip();
 		handleInitialTab();
+		handleCollapseTable();
 	});
 })(jQuery);
