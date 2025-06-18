@@ -1,6 +1,7 @@
 :root {
 	--color-primary: #020210;
 	--color-secondary: #1c1a29;
+	--color-secondary: #1c1a29;
 	--color-highlight: #63697b;
 	--color-text-primary: #c1c1c1;
 	--color-text-secondary: #ababab;
@@ -402,17 +403,20 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 15px;
+	gap: 25px;
+	border-bottom: 1px solid #2D2D2D;
+	padding: 0 24px 0 16px;
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_money {
 	font-size: 12px;
-	width: 25%;
-	padding-left: 16px;
+	width: 30%;
+	flex-shrink: 0;
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time {
 	position: relative;
+	width: 70%;
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list {
@@ -420,21 +424,21 @@ body {
 	align-items: center;
 	position: relative;
 	gap: 25px;
-	padding: 0 24px 0 16px;
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item {
 	display: flex;
-	text-align: right;
-	line-height: 1.5;
 	flex-direction: column;
 	background: transparent;
-	color: var(--color-text-primary);
-	padding: 16px 0;
+	text-align: right;
+	line-height: 1.5;
 	font-size: 12px;
 	font-weight: 500;
+	color: var(--color-text-primary);
+	padding: 16px 0;
 	white-space: nowrap;
 	user-select: none;
+	width: calc(100% / 4);
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__button {
@@ -461,13 +465,95 @@ body {
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__button.buttonPrev {
-	left: -16px;
+	left: -24px;
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__button.buttonNext {
-	right: 0px;
+	right: -24px;
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__button:hover svg {
 	fill: #14936c;
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__heading {
+	background: rgba(255, 255, 255, 0.05);
+	padding: 13px 16px;
+	font-size: 1.075em;
+	font-weight: 600;
+	font-style: italic;
+	color: var(--bs-white);
+	text-transform: uppercase;
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__child .chart-table_item__wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 24px 0 16px;
+	gap: 25px;
+	height: 54px;
+	transition: var(--transition-default);
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__child .chart-table_item__wrapper:hover {
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__title {
+	width: 30%;
+	flex-shrink: 0;
+	padding: 16px 0;
+	line-height: 1.5;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--bs-white);
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__row {
+	width: 70%;
+	display: flex;
+	align-items: center;
+	position: relative;
+	gap: 25px;
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__column {
+	padding: 16px 0;
+	width: calc(100% / 4);
+	text-align: right;
+	line-height: 1.5;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--bs-white);
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__child + .chart-table_item__child {
+	border-top: 1px solid #2D2D2D;
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__sub .chart-table_item__title {
+	padding-left: 16px;
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__sub {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 24px 0 16px;
+	gap: 25px;
+	height: 54px;
+	border-top: 1px solid #2D2D2D;
+	transition: var(--transition-default);
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__sub:hover {
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.chart-table .chart-table_body .chart-table_item .chart-table_item__sub .chart-table_item__column {
+	font-size: 12px;
+	font-weight: 400;
+	font-style: italic;
+	color: var(--color-text-primary);
 }
