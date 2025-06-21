@@ -143,16 +143,18 @@
 				return false;
 			}
 			
+			const filterResult = $('#filterResult');
+			filterResult.show();
+			filterResult.find('.nameStock1').html(dataIndustry[filterIndustryValue][filterStock1Value]);
+			filterResult.find('.nameStock2').html(dataIndustry[filterIndustryValue][filterStock2Value]);
 			
-			$('#filterResult').show();
-			handleInitialChart();
-			handleInitialTooltip();
+			handleInitialChart(filterIndustryValue, filterStock1Value, filterStock2Value);
 			handleInitialTab();
 			handleCollapseTable();
 		});
 	}
 	
-	const handleInitialChart = function () {
+	const handleInitialChart = function (filterIndustryValue, filterStock1Value, filterStock2Value) {
 		const chartPreview = $('.chart-preview');
 		if (chartPreview.length) {
 			chartPreview.map((idx, item) => {
@@ -164,33 +166,19 @@
 						labels: [ 'Q1', 'Q2', 'Q3', 'Q4' ],
 						datasets: [
 							{
-								label: 'PVS',
+								label: dataIndustry[filterIndustryValue][filterStock1Value],
 								data: [ 30, 28, 24, 20 ],
 								borderColor: '#099444',
 								backgroundColor: '#82ffb8',
 								tension: 0.4
 							},
 							{
-								label: 'YEG',
+								label: dataIndustry[filterIndustryValue][filterStock2Value],
 								data: [ 45, 20, 35, 50 ],
 								borderColor: '#0e6096',
 								backgroundColor: '#86cdff',
 								tension: 0.4
 							},
-							{
-								label: 'CTG',
-								data: [ 74, 78, 54, 23 ],
-								borderColor: '#85560b',
-								backgroundColor: '#ffcb7f',
-								tension: 0.4
-							},
-							{
-								label: 'VCB',
-								data: [ 80, 66, 78, 92 ],
-								borderColor: '#FF6384',
-								backgroundColor: '#FFB1C1',
-								tension: 0.4
-							}
 						]
 					},
 					options: {
@@ -261,11 +249,6 @@
 				});
 			})
 		}
-	}
-	
-	const handleInitialTooltip = function () {
-		const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-		const tooltipList = [ ...tooltipTriggerList ].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 	}
 	
 	const handleInitialTab = () => {
