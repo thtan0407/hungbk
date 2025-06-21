@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Đăng nhập tài khoản</title>
+	<meta property="og:site_name" content="Đăng nhập tài khoản">
+	<meta name="description" content="Đăng nhập tài khoản">
+	<meta name="author" content="Đăng nhập tài khoản">
+
+	<meta property="og:title" content="Đăng nhập tài khoản">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="">
+	<meta property="og:description"
+	      content="Đăng nhập tài khoản">
+	<meta property="og:image" content="">
+
+	<link rel="icon" href="">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+	      rel="stylesheet">
+
+	<link rel="stylesheet" href="./assets/libs/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./assets/libs/select2/css/select2.min.css">
+	<link rel="stylesheet" href="./assets/libs/sweetalert2/sweetalert2.min.css">
+	<link rel="stylesheet" href="./assets/css/style.css?ver=1">
+
+</head>
+<body>
+<div class="main">
+	<div class="page-account">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-8 col-sm-10 col-lg-6 col-xl-5">
+					<div class="section-account">
+						<div class="account-title">
+							Tạo tài khoản
+						</div>
+						<form id="frmSignIn" action="" class="account-form needs-validation" novalidate>
+							<div class="account-form_item">
+								<label for="fullname" class="form-label">Họ & tên</label>
+								<input type="text" class="form-control" id="fullname"
+								       placeholder="Nhập họ & tên của bạn" required>
+								<div class="invalid-feedback">
+									Vui lòng nhập họ & tên.
+								</div>
+							</div>
+							<div class="account-form_item">
+								<label for="email" class="form-label">Email</label>
+								<input type="email" class="form-control" id="email"
+								       placeholder="Nhập email của bạn" required>
+								<div class="invalid-feedback">
+									Vui lòng nhập email.
+								</div>
+							</div>
+							<div class="account-form_item">
+								<label for="phone" class="form-label">Số điện thoại</label>
+								<input type="tel" minlength="10" maxlength="10" class="form-control" id="phone"
+								       placeholder="Nhập số điện thoại của bạn" required>
+								<div class="invalid-feedback">
+									Vui lòng nhập số điện thoại
+								</div>
+							</div>
+							<div class="account-form_item">
+								<label for="username" class="form-label">Tên đăng nhập</label>
+								<input type="text" class="form-control" id="username"
+								       placeholder="Nhập tên đăng nhập" required>
+								<div class="invalid-feedback">
+									Vui lòng nhập tên đăng nhập.
+								</div>
+							</div>
+							<div class="account-form_item">
+								<label for="password" class="form-label">Mật khẩu</label>
+								<input type="text" class="form-control" id="password"
+								       placeholder="Nhập mật khẩu" required>
+								<div class="invalid-feedback">
+									Vui lòng nhập mật khẩu
+								</div>
+							</div>
+							<div class="account-form_item">
+								<button class="button-theme w-100">Tạo tài khoản</button>
+							</div>
+							<div class="account-form_item">
+								<div class="account-form_item__text">
+									Đã có tài khoản? <a href="./sign-in.html" class="fw-medium">Đăng nhập ngay</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="./assets/libs/jquery.min.js"></script>
+<script type="text/javascript" src="./assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="./assets/libs/select2/js/select2.min.js"></script>
+<script type="text/javascript" src="./assets/libs/select2/js/select2-searchInputPlaceholder.js"></script>
+<script type="text/javascript" src="./assets/libs/select2/js/select2-vi.min.js"></script>
+<script type="text/javascript" src="./assets/libs/sweetalert2/sweetalert2.min.js"></script>
+<script type="text/javascript" src="./assets/libs/chartjs/chart.js"></script>
+<script type="text/javascript" src="./assets/js/app.js?ver=1"></script>
+<script type="text/javascript" src="./assets/js/register.js?ver=1"></script>
+</body>
+</html>
