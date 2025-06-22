@@ -23,7 +23,6 @@
 					dataSend.append(nameInput, valueInput);
 				});
 
-
 				fetch('http://20.89.170.203:8000/login', {
 					method: 'POST',
 					headers: {
@@ -59,7 +58,7 @@
 							icon: "error",
 							title: "Có lỗi khi đăng ký, vui lòng thử lại."
 						});
-						//setTimeout(() => window.location.reload(), 3000);
+						setTimeout(() => window.location.reload(), 3000);
 					});
 			}
 

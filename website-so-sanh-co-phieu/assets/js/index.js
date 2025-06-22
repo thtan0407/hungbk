@@ -1,9 +1,12 @@
 ;(function ($) {
 	'use strict';
 	let dataIndustry = [];
+	let mappingBCTC = [];
+	let chartFields = {};
 	const filterIndustry = $('#filterIndustry');
 	const filterStock1 = $('#filterStock1');
 	const filterStock2 = $('#filterStock2');
+	const filterResult = $('#filterResult');
 
 	const handleLoadPage = function () {
 		const pathJson = './assets/json/stock.json';
@@ -83,7 +86,7 @@
 			if (filterIndustry.val() > 0 && dataIndustry[filterIndustry.val()] !== undefined) {
 				let optionStock = '<option value="-1">Chọn mã cổ phiếu</option>';
 				dataIndustry[filterIndustry.val()].map(function (item, idx) {
-					optionStock += `<option value="${ idx }">${ item }</option>`;
+					optionStock += `<option value="${item}">${item}</option>`;
 				});
 
 				filterStock1.html(optionStock).trigger('change.select2');
@@ -114,7 +117,7 @@
 				return false;
 			}
 
-			if (parseInt(filterStock1Value) === -1 || parseInt(filterStock2Value) === -1 || dataIndustry[filterIndustryValue][filterStock1Value] === undefined) {
+			if (parseInt(filterStock1Value) === -1 || parseInt(filterStock2Value) === -1) {
 				Toast.fire({
 					icon: "error",
 					title: "Vui lòng chọn mã cổ phiếu. Lưu ý 2 mã cổ phiếu phải khác nhau"
@@ -123,7 +126,7 @@
 				return false;
 			}
 
-			if (parseInt(filterStock1Value) === parseInt(filterStock2Value)) {
+			if (filterStock1Value === filterStock2Value) {
 				Toast.fire({
 					icon: "error",
 					title: "Vui lòng chọn 2 mã cổ phiếu khác nhau."
@@ -132,125 +135,228 @@
 				return false;
 			}
 
-			const filterResult = $('#filterResult');
-			filterResult.show();
-			filterResult.find('.nameStock1').html(dataIndustry[filterIndustryValue][filterStock1Value]);
-			filterResult.find('.nameStock2').html(dataIndustry[filterIndustryValue][filterStock2Value]);
+			const urlAPI = `http://20.89.170.203:8000/mapping-bctc`;
 
-			handleInitialChart(filterIndustryValue, filterStock1Value, filterStock2Value);
-			handleInitialTab();
+			fetch(urlAPI)
+				.then(response => response.json())
+				.then(data => {
+					if (Object.keys(data).length > 0) {
+						mappingBCTC = data[filterIndustryValue];
+						chartFields = mappingBCTC.colunm_chart.map((key, index) => {
+							return {
+								key: key,
+								label: mappingBCTC.column_mapping[key] || key,
+								borderColor: arrColors[index % arrColors.length].borderColor,
+								background: arrColors[index % arrColors.length].background
+							}
+						});
+
+						const fetchStock1 = handleRenderStock(filterIndustryValue, filterStock1Value, 'quy', '#chartPreview');
+						const fetchStock2 = handleRenderStock(filterIndustryValue, filterStock2Value, 'quy', '#chartPreview2');
+						filterResult.show();
+						filterResult.find('.nameStock1').html(filterStock1Value);
+						filterResult.find('.nameStock2').html(filterStock2Value);
+
+						handleInitialTab();
+					} else {
+						Toast.fire({
+							icon: "error",
+							title: "Có lỗi xảy ra, vui lòng thử lại."
+						});
+
+						setTimeout(() => window.location.reload(), 3000);
+					}
+				})
+				.catch(error => {
+					Toast.fire({
+						icon: "error",
+						title: "Có lỗi xảy ra, vui lòng thử lại."
+					});
+					setTimeout(() => window.location.reload(), 3000);
+				});
 		});
 	}
 
-	const handleInitialChart = function (filterIndustryValue, filterStock1Value, filterStock2Value) {
-		const chartPreview = $('.chart-preview');
-		if (chartPreview.length) {
-			chartPreview.map((idx, item) => {
-				const chart = $(item)[0].getContext('2d');
+	const handleRenderStock = (stockType, stockCode, chartType = 'quy', chartItem = '') => {
+		const urlAPI = `http://20.89.170.203:8000/stocks?stockCode=${stockCode}&stockType=${stockType}`;
 
-				const lineChart = new Chart(chart, {
-					type: 'line',
-					data: {
-						labels: [ 'Q1', 'Q2', 'Q3', 'Q4' ],
-						datasets: [
-							{
-								label: "Tổng thu nhập từ hoạt động kinh doanh",
-								data: [ 30, 28, 24, 20 ],
-								borderColor: '#099444',
-								backgroundColor: '#82ffb8',
-								tension: 0.4
-							},
-							{
-								label: "Thu nhập lãi thuần",
-								data: [ 45, 20, 35, 50 ],
-								borderColor: '#0e6096',
-								backgroundColor: '#86cdff',
-								tension: 0.4
-							},
-							{
-								label: "Lãi/Lỗ thuần từ hoạt động dịch vụ",
-								data: [98, 28, 54, 90],
-								borderColor: '#FF4069',
-								backgroundColor: '#FFA0B4',
-								tension: 0.4
-							},
-							{
-								label: "Chi phí hoạt động",
-								data: [15, 78, 50, 20],
-								borderColor: '#FF9020',
-								backgroundColor: '#FFCF9F',
-								tension: 0.4
-							},
-							{
-								label: "Dự phòng rủi ro cho vay khách hàng",
-								data: [55, 30, 15, 80],
-								borderColor: '#9966FF',
-								backgroundColor: '#CCB2FF',
-								tension: 0.4
-							},
-						]
-					},
-					options: {
-						responsive: true,
-						maintainAspectRatio: true,
-						aspectRatio: 1 / 0.75,
-						plugins: {
-							legend: {
-								labels: {
-									color: '#ffffff',
-									padding: 15,
-									font: {
-										size: 13,
-									},
-								},
-								position: 'bottom',
-							},
-							title: {
-								display: true,
-								text: dataIndustry[filterIndustryValue][filterStock1Value],
+		fetch(urlAPI)
+			.then(response => response.json())
+			.then(data => {
+				if (data[chartType].length > 0) {
+					handleInitialChart(stockCode, data[chartType], chartItem);
+				} else {
+					Toast.fire({
+						icon: "error",
+						title: "Có lỗi xảy ra, vui lòng thử lại."
+					});
+
+					setTimeout(() => window.location.reload(), 3000);
+				}
+			})
+			.catch(error => {
+				Toast.fire({
+					icon: "error",
+					title: error
+				});
+				console.error('Lỗi fetch:', error);
+				//setTimeout(() => window.location.reload(), 3000);
+			});
+	}
+
+	const arrColors = [
+		{
+			borderColor: '#099444',
+			background: '#82ffb8'
+		},
+		{
+			borderColor: '#0e6096',
+			background: '#86cdff'
+		},
+		{
+			borderColor: '#FF9020',
+			background: '#FFCF9F'
+		},
+		{
+			borderColor: '#9966FF',
+			background: '#CCB2FF'
+		},
+		{
+			borderColor: '#FF4069',
+			background: '#FFA0B4'
+		}
+	]
+
+	const generateDataSets = (dataStock) => {
+		return chartFields.map(field => ({
+			label: field.label,
+			data: dataStock.map(item => item[field.key] ?? 0),
+			borderColor: field.borderColor,
+			backgroundColor: field.background, // thêm độ mờ
+			tension: 0.4
+		}));
+	}
+
+	const generateLabels = (dataStock) => {
+		return dataStock.map(item => `Q${item.ky} - ${item.nam}`);
+	}
+
+	const handleInitialChart = function (stockCode, stockValue, chartItem) {
+		const chart = $(chartItem);
+		if (chart.length) {
+			const chx = chart[0].getContext('2d');
+
+			const labels = generateLabels(stockValue);
+			const dataSets = generateDataSets(stockValue);
+
+			const allValues = dataSets.flatMap(ds => ds.data);
+			const minY = Math.min(...allValues);
+			const maxY = Math.max(...allValues);
+
+			const lineChart = new Chart(chx, {
+				type: 'line',
+				data: {
+					labels: labels,
+					datasets: dataSets
+					/*labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+					datasets: [
+						{
+							label: "Tổng thu nhập từ hoạt động kinh doanh",
+							data: [30, 28, 24, 20],
+							borderColor: '#099444',
+							backgroundColor: '#82ffb8',
+							tension: 0.4
+						},
+						{
+							label: "Thu nhập lãi thuần",
+							data: [45, 20, 35, 50],
+							borderColor: '#0e6096',
+							backgroundColor: '#86cdff',
+							tension: 0.4
+						},
+						{
+							label: "Lãi/Lỗ thuần từ hoạt động dịch vụ",
+							data: [98, 28, 54, 90],
+							borderColor: '#FF4069',
+							backgroundColor: '#FFA0B4',
+							tension: 0.4
+						},
+						{
+							label: "Chi phí hoạt động",
+							data: [15, 78, 50, 20],
+							borderColor: '#FF9020',
+							backgroundColor: '#FFCF9F',
+							tension: 0.4
+						},
+						{
+							label: "Dự phòng rủi ro cho vay khách hàng",
+							data: [55, 30, 15, 80],
+							borderColor: '#9966FF',
+							backgroundColor: '#CCB2FF',
+							tension: 0.4
+						},
+					]*/
+				},
+				options: {
+					responsive: true,
+					maintainAspectRatio: true,
+					aspectRatio: 1 / 0.75,
+					plugins: {
+						legend: {
+							labels: {
 								color: '#ffffff',
-								padding:  {
-									top: 7.5,
-									bottom: 20
-								},
+								padding: 15,
 								font: {
-									size: 18,
-									weight: 'bold',
-								},
-							}
-						},
-						layout: {
-							padding: {
-								bottom: 10
-							}
-						},
-						scales: {
-							y: {
-								min: 0,
-								max: 100,
-								grid: {
-									color: '#2D2D2D',
-									drawTicks: false,
-								},
-								ticks: {
-									color: '#ffffff',
-									padding: 5
+									size: 13,
 								},
 							},
-							x: {
-								grid: {
-									color: '#2d2d2d',
-									drawTicks: false,
-								},
-								ticks: {
-									color: '#ffffff',
-									padding: 5
-								},
-							}
+							position: 'bottom',
+						},
+						title: {
+							display: true,
+							text: stockCode,
+							color: '#ffffff',
+							padding: {
+								top: 7.5,
+								bottom: 20
+							},
+							font: {
+								size: 18,
+								weight: 'bold',
+							},
+						}
+					},
+					layout: {
+						padding: {
+							bottom: 10
+						}
+					},
+					scales: {
+						y: {
+							min: minY,
+							max: maxY,
+							grid: {
+								color: '#2D2D2D',
+								drawTicks: false,
+							},
+							ticks: {
+								color: '#ffffff',
+								padding: 5
+							},
+						},
+						x: {
+							grid: {
+								color: '#2d2d2d',
+								drawTicks: false,
+							},
+							ticks: {
+								color: '#ffffff',
+								padding: 5
+							},
 						}
 					}
-				});
-			})
+				}
+			});
 		}
 	}
 
