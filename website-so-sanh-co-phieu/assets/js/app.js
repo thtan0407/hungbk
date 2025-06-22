@@ -9,3 +9,10 @@ const Toast = Swal.mixin({
 		toast.onmouseleave = Swal.resumeTimer;
 	}
 });
+
+const handleRedirectIsLogin = () => {
+	const isLogin = localStorage.getItem('login');
+	if (isLogin) {
+		location.href = './';
+	}
+}

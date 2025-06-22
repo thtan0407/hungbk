@@ -5,16 +5,16 @@
 	<meta name="viewport"
 	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Đăng nhập tài khoản</title>
-	<meta property="og:site_name" content="Đăng nhập tài khoản">
-	<meta name="description" content="Đăng nhập tài khoản">
-	<meta name="author" content="Đăng nhập tài khoản">
+	<title>Đăng ký tài khoản</title>
+	<meta property="og:site_name" content="Đăng ký tài khoản">
+	<meta name="description" content="Đăng ký tài khoản">
+	<meta name="author" content="Đăng ký tài khoản">
 
-	<meta property="og:title" content="Đăng nhập tài khoản">
+	<meta property="og:title" content="Đăng ký tài khoản">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="">
 	<meta property="og:description"
-	      content="Đăng nhập tài khoản">
+	      content="Đăng ký tài khoản">
 	<meta property="og:image" content="">
 
 	<link rel="icon" href="">
@@ -40,42 +40,37 @@
 						<div class="account-title">
 							Tạo tài khoản
 						</div>
-						<form id="frmSignIn" action="" class="account-form needs-validation" novalidate>
+						<form id="frmRegister" action="" class="account-form needs-validation" novalidate>
 							<div class="account-form_item">
 								<label for="fullname" class="form-label">Họ & tên</label>
-								<input type="text" class="form-control" id="fullname"
+								<input type="text" class="form-control inputData" id="fullname" name="fullname"
 								       placeholder="Nhập họ & tên của bạn" required>
 								<div class="invalid-feedback">
 									Vui lòng nhập họ & tên.
 								</div>
 							</div>
 							<div class="account-form_item">
-								<label for="email" class="form-label">Email</label>
-								<input type="email" class="form-control" id="email"
-								       placeholder="Nhập email của bạn" required>
-								<div class="invalid-feedback">
-									Vui lòng nhập email.
-								</div>
-							</div>
-							<div class="account-form_item">
 								<label for="phone" class="form-label">Số điện thoại</label>
-								<input type="tel" minlength="10" maxlength="10" class="form-control" id="phone"
+								<input type="tel" minlength="10" maxlength="10" class="form-control inputData"
+								       id="phone" name="phone"
 								       placeholder="Nhập số điện thoại của bạn" required>
 								<div class="invalid-feedback">
 									Vui lòng nhập số điện thoại
 								</div>
 							</div>
 							<div class="account-form_item">
-								<label for="username" class="form-label">Tên đăng nhập</label>
-								<input type="text" class="form-control" id="username"
-								       placeholder="Nhập tên đăng nhập" required>
+								<label for="email" class="form-label">Email Đăng ký</label>
+								<input type="text" class="form-control inputData"
+								       id="email" name="email"
+								       placeholder="Nhập email Đăng ký" required>
 								<div class="invalid-feedback">
-									Vui lòng nhập tên đăng nhập.
+									Vui lòng nhập email Đăng ký.
 								</div>
 							</div>
 							<div class="account-form_item">
 								<label for="password" class="form-label">Mật khẩu</label>
-								<input type="text" class="form-control" id="password"
+								<input type="password" class="form-control inputData"
+								       id="password" name="password"
 								       placeholder="Nhập mật khẩu" required>
 								<div class="invalid-feedback">
 									Vui lòng nhập mật khẩu
@@ -86,7 +81,7 @@
 							</div>
 							<div class="account-form_item">
 								<div class="account-form_item__text">
-									Đã có tài khoản? <a href="./sign-in.html" class="fw-medium">Đăng nhập ngay</a>
+									Đã có tài khoản? <a href="./sign-in.html" class="fw-medium">Đăng ký ngay</a>
 								</div>
 							</div>
 						</form>
