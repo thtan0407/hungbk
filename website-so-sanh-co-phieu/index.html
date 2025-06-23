@@ -9,21 +9,21 @@
 	<meta property="og:site_name" content="So sánh cổ phiếu">
 	<meta name="description" content="So sánh cổ phiếu">
 	<meta name="author" content="So sánh cổ phiếu">
-
+	
 	<meta property="og:title" content="So sánh cổ phiếu">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="">
 	<meta property="og:description"
 	      content="So sánh cổ phiếu">
 	<meta property="og:image" content="">
-
+	
 	<link rel="icon" href="">
-
+	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	      rel="stylesheet">
-
+	
 	<link rel="stylesheet" href="./assets/libs/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./assets/libs/select2/css/select2.min.css">
 	<link rel="stylesheet" href="./assets/libs/sweetalert2/sweetalert2.min.css">
@@ -111,7 +111,7 @@
 					<div class="section-chart">
 						<div class="chart-title">
 							So sánh số liệu báo cáo tài chính giữa <span class="nameStock1"></span> và <span
-								class="nameStock2"></span>
+							class="nameStock2"></span>
 						</div>
 						<div class="chart-button">
 							<button type="button" class="button-theme button-theme_sm active">
@@ -122,324 +122,322 @@
 							</button>
 						</div>
 						<div class="chart-content">
-							<div class="container">
-								<div class="row g-4">
-									<div class="col-lg-6">
-										<canvas id="chartPreview" class="chart-preview"></canvas>
-										<div class="chart-table">
-											<div class="chart-table_header">
-												<div class="chart-table_header__top">
-													<div class="chart-table_title">
-														Báo cáo tài chính theo quý
-													</div>
-													<div class="chart-table_list handleEffectTab">
-														<button type="button"
-														        class="chart-table_list__button handleEffectTabItem active">
-															Theo Quý
-														</button>
-														<button type="button"
-														        class="chart-table_list__button handleEffectTabItem">
-															Theo
-															Năm
-														</button>
-														<div class="chart-table_line handleEffectTabLine"></div>
-													</div>
+							<div class="row g-4">
+								<div class="col-lg-6">
+									<canvas id="chartPreview" class="chart-preview"></canvas>
+									<div class="chart-table">
+										<div class="chart-table_header">
+											<div class="chart-table_header__top">
+												<div class="chart-table_title">
+													Báo cáo tài chính theo quý
 												</div>
-												<div class="chart-table_header__bottom">
-													<div class="chart-table_money">
-														Đơn vi: triệu đồng
+												<div class="chart-table_list handleEffectTab">
+													<button type="button"
+													        class="chart-table_list__button handleEffectTabItem active">
+														Theo Quý
+													</button>
+													<button type="button"
+													        class="chart-table_list__button handleEffectTabItem">
+														Theo
+														Năm
+													</button>
+													<div class="chart-table_line handleEffectTabLine"></div>
+												</div>
+											</div>
+											<div class="chart-table_header__bottom">
+												<div class="chart-table_money">
+													Đơn vi: triệu đồng
+												</div>
+												<div class="chart-table_time">
+													<button type="button"
+													        class="chart-table_time__button buttonPrev">
+														<svg xmlns="http://www.w3.org/2000/svg"
+														     viewBox="0 0 448 512">
+															<path
+																d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+														</svg>
+													</button>
+													<div class="chart-table_time__list">
+														<div class="chart-table_time__list___item">
+															<span>Quý 1/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 2/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 3/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 4/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
 													</div>
-													<div class="chart-table_time">
-														<button type="button"
-														        class="chart-table_time__button buttonPrev">
-															<svg xmlns="http://www.w3.org/2000/svg"
-															     viewBox="0 0 448 512">
-																<path
-																		d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
-															</svg>
-														</button>
-														<div class="chart-table_time__list">
-															<div class="chart-table_time__list___item">
-																<span>Quý 1/2020</span>
-																<span>Hợp nhất/CKT</span>
+													<button type="button"
+													        class="chart-table_time__button buttonNext">
+														<svg xmlns="http://www.w3.org/2000/svg"
+														     viewBox="0 0 448 512">
+															<path
+																d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="chart-table_body">
+											<div class="chart-table_item">
+												<div class="chart-table_item__heading">
+													Kết quả kinh doanh
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Tổng thu nhập từ hoạt động kinh doanh
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 2/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																11,754,335
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 3/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																9,554,599
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 4/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																11,611,198
 															</div>
 														</div>
-														<button type="button"
-														        class="chart-table_time__button buttonNext">
-															<svg xmlns="http://www.w3.org/2000/svg"
-															     viewBox="0 0 448 512">
-																<path
-																		d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
-															</svg>
-														</button>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Thu nhập lãi thuần
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
+															</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Lãi/Lỗ thuần từ hoạt động dịch vụ
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
+															</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
+															</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
+															</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="chart-table_body">
-												<div class="chart-table_item">
-													<div class="chart-table_item__heading">
-														Kết quả kinh doanh
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Tổng thu nhập từ hoạt động kinh doanh
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
+											<div class="chart-table_item">
+												<div class="chart-table_item__heading">
+													Cân đối kế toán
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Tổng thu nhập từ hoạt động kinh doanh
 														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Thu nhập lãi thuần
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
+															<div class="chart-table_item__column">
+																11,754,335
 															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Lãi/Lỗ thuần từ hoạt động dịch vụ
+															<div class="chart-table_item__column">
+																9,554,599
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
+															<div class="chart-table_item__column">
+																11,611,198
 															</div>
 														</div>
 													</div>
 												</div>
-												<div class="chart-table_item">
-													<div class="chart-table_item__heading">
-														Cân đối kế toán
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Tổng thu nhập từ hoạt động kinh doanh
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Thu nhập lãi thuần
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
 															</div>
 														</div>
 													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Thu nhập lãi thuần
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Lãi/Lỗ thuần từ hoạt động dịch vụ
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
 															</div>
 														</div>
 													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Lãi/Lỗ thuần từ hoạt động dịch vụ
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
-															</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
 														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
 															</div>
 														</div>
 													</div>
@@ -447,322 +445,322 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-6">
-										<canvas id="chartPreview2" class="chart-preview"></canvas>
-										<div class="chart-table">
-											<div class="chart-table_header">
-												<div class="chart-table_header__top">
-													<div class="chart-table_title">
-														Báo cáo tài chính theo quý
-													</div>
-													<div class="chart-table_list handleEffectTab">
-														<button type="button"
-														        class="chart-table_list__button handleEffectTabItem active">
-															Theo Quý
-														</button>
-														<button type="button"
-														        class="chart-table_list__button handleEffectTabItem">
-															Theo
-															Năm
-														</button>
-														<div class="chart-table_line handleEffectTabLine"></div>
-													</div>
+								</div>
+								<div class="col-lg-6">
+									<canvas id="chartPreview2" class="chart-preview"></canvas>
+									<div class="chart-table">
+										<div class="chart-table_header">
+											<div class="chart-table_header__top">
+												<div class="chart-table_title">
+													Báo cáo tài chính theo quý
 												</div>
-												<div class="chart-table_header__bottom">
-													<div class="chart-table_money">
-														Đơn vi: triệu đồng
+												<div class="chart-table_list handleEffectTab">
+													<button type="button"
+													        class="chart-table_list__button handleEffectTabItem active">
+														Theo Quý
+													</button>
+													<button type="button"
+													        class="chart-table_list__button handleEffectTabItem">
+														Theo
+														Năm
+													</button>
+													<div class="chart-table_line handleEffectTabLine"></div>
+												</div>
+											</div>
+											<div class="chart-table_header__bottom">
+												<div class="chart-table_money">
+													Đơn vi: triệu đồng
+												</div>
+												<div class="chart-table_time">
+													<button type="button"
+													        class="chart-table_time__button buttonPrev">
+														<svg xmlns="http://www.w3.org/2000/svg"
+														     viewBox="0 0 448 512">
+															<path
+																d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+														</svg>
+													</button>
+													<div class="chart-table_time__list">
+														<div class="chart-table_time__list___item">
+															<span>Quý 1/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 2/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 3/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 4/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
 													</div>
-													<div class="chart-table_time">
-														<button type="button"
-														        class="chart-table_time__button buttonPrev">
-															<svg xmlns="http://www.w3.org/2000/svg"
-															     viewBox="0 0 448 512">
-																<path
-																		d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
-															</svg>
-														</button>
-														<div class="chart-table_time__list">
-															<div class="chart-table_time__list___item">
-																<span>Quý 1/2020</span>
-																<span>Hợp nhất/CKT</span>
+													<button type="button"
+													        class="chart-table_time__button buttonNext">
+														<svg xmlns="http://www.w3.org/2000/svg"
+														     viewBox="0 0 448 512">
+															<path
+																d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="chart-table_body">
+											<div class="chart-table_item">
+												<div class="chart-table_item__heading">
+													Kết quả kinh doanh
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Tổng thu nhập từ hoạt động kinh doanh
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 2/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																11,754,335
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 3/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																9,554,599
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 4/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																11,611,198
 															</div>
 														</div>
-														<button type="button"
-														        class="chart-table_time__button buttonNext">
-															<svg xmlns="http://www.w3.org/2000/svg"
-															     viewBox="0 0 448 512">
-																<path
-																		d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
-															</svg>
-														</button>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Thu nhập lãi thuần
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
+															</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Lãi/Lỗ thuần từ hoạt động dịch vụ
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
+															</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
+															</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
+															</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="chart-table_body">
-												<div class="chart-table_item">
-													<div class="chart-table_item__heading">
-														Kết quả kinh doanh
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Tổng thu nhập từ hoạt động kinh doanh
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
+											<div class="chart-table_item">
+												<div class="chart-table_item__heading">
+													Cân đối kế toán
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Tổng thu nhập từ hoạt động kinh doanh
 														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Thu nhập lãi thuần
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
+															<div class="chart-table_item__column">
+																11,754,335
 															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Lãi/Lỗ thuần từ hoạt động dịch vụ
+															<div class="chart-table_item__column">
+																9,554,599
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
+															<div class="chart-table_item__column">
+																11,611,198
 															</div>
 														</div>
 													</div>
 												</div>
-												<div class="chart-table_item">
-													<div class="chart-table_item__heading">
-														Cân đối kế toán
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Tổng thu nhập từ hoạt động kinh doanh
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Thu nhập lãi thuần
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
 															</div>
 														</div>
 													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Thu nhập lãi thuần
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Lãi/Lỗ thuần từ hoạt động dịch vụ
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
 															</div>
 														</div>
 													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Lãi/Lỗ thuần từ hoạt động dịch vụ
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
-															</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
 														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
 															</div>
 														</div>
 													</div>
@@ -779,7 +777,7 @@
 					<div class="section-chart">
 						<div class="chart-title">
 							So sánh số liệu lưu chuyển tiền tiện tệ giữa <span class="nameStock1"></span> và <span
-								class="nameStock2"></span>
+							class="nameStock2"></span>
 						</div>
 						<div class="chart-button">
 							<button type="button" class="button-theme button-theme_sm active">
@@ -790,324 +788,322 @@
 							</button>
 						</div>
 						<div class="chart-content">
-							<div class="container">
-								<div class="row g-4">
-									<div class="col-lg-6">
-										<canvas id="chartPreview3" class="chart-preview"></canvas>
-										<div class="chart-table">
-											<div class="chart-table_header">
-												<div class="chart-table_header__top">
-													<div class="chart-table_title">
-														Báo cáo tài chính theo quý
-													</div>
-													<div class="chart-table_list handleEffectTab">
-														<button type="button"
-														        class="chart-table_list__button handleEffectTabItem active">
-															Theo Quý
-														</button>
-														<button type="button"
-														        class="chart-table_list__button handleEffectTabItem">
-															Theo
-															Năm
-														</button>
-														<div class="chart-table_line handleEffectTabLine"></div>
-													</div>
+							<div class="row g-4">
+								<div class="col-lg-6">
+									<canvas id="chartPreview3" class="chart-preview"></canvas>
+									<div class="chart-table">
+										<div class="chart-table_header">
+											<div class="chart-table_header__top">
+												<div class="chart-table_title">
+													Báo cáo tài chính theo quý
 												</div>
-												<div class="chart-table_header__bottom">
-													<div class="chart-table_money">
-														Đơn vi: triệu đồng
+												<div class="chart-table_list handleEffectTab">
+													<button type="button"
+													        class="chart-table_list__button handleEffectTabItem active">
+														Theo Quý
+													</button>
+													<button type="button"
+													        class="chart-table_list__button handleEffectTabItem">
+														Theo
+														Năm
+													</button>
+													<div class="chart-table_line handleEffectTabLine"></div>
+												</div>
+											</div>
+											<div class="chart-table_header__bottom">
+												<div class="chart-table_money">
+													Đơn vi: triệu đồng
+												</div>
+												<div class="chart-table_time">
+													<button type="button"
+													        class="chart-table_time__button buttonPrev">
+														<svg xmlns="http://www.w3.org/2000/svg"
+														     viewBox="0 0 448 512">
+															<path
+																d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+														</svg>
+													</button>
+													<div class="chart-table_time__list">
+														<div class="chart-table_time__list___item">
+															<span>Quý 1/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 2/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 3/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 4/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
 													</div>
-													<div class="chart-table_time">
-														<button type="button"
-														        class="chart-table_time__button buttonPrev">
-															<svg xmlns="http://www.w3.org/2000/svg"
-															     viewBox="0 0 448 512">
-																<path
-																		d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
-															</svg>
-														</button>
-														<div class="chart-table_time__list">
-															<div class="chart-table_time__list___item">
-																<span>Quý 1/2020</span>
-																<span>Hợp nhất/CKT</span>
+													<button type="button"
+													        class="chart-table_time__button buttonNext">
+														<svg xmlns="http://www.w3.org/2000/svg"
+														     viewBox="0 0 448 512">
+															<path
+																d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="chart-table_body">
+											<div class="chart-table_item">
+												<div class="chart-table_item__heading">
+													Kết quả kinh doanh
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Tổng thu nhập từ hoạt động kinh doanh
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 2/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																11,754,335
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 3/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																9,554,599
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 4/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																11,611,198
 															</div>
 														</div>
-														<button type="button"
-														        class="chart-table_time__button buttonNext">
-															<svg xmlns="http://www.w3.org/2000/svg"
-															     viewBox="0 0 448 512">
-																<path
-																		d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
-															</svg>
-														</button>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Thu nhập lãi thuần
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
+															</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Lãi/Lỗ thuần từ hoạt động dịch vụ
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
+															</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
+															</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
+															</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="chart-table_body">
-												<div class="chart-table_item">
-													<div class="chart-table_item__heading">
-														Kết quả kinh doanh
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Tổng thu nhập từ hoạt động kinh doanh
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
+											<div class="chart-table_item">
+												<div class="chart-table_item__heading">
+													Cân đối kế toán
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Tổng thu nhập từ hoạt động kinh doanh
 														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Thu nhập lãi thuần
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
+															<div class="chart-table_item__column">
+																11,754,335
 															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Lãi/Lỗ thuần từ hoạt động dịch vụ
+															<div class="chart-table_item__column">
+																9,554,599
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
+															<div class="chart-table_item__column">
+																11,611,198
 															</div>
 														</div>
 													</div>
 												</div>
-												<div class="chart-table_item">
-													<div class="chart-table_item__heading">
-														Cân đối kế toán
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Tổng thu nhập từ hoạt động kinh doanh
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Thu nhập lãi thuần
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
 															</div>
 														</div>
 													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Thu nhập lãi thuần
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Lãi/Lỗ thuần từ hoạt động dịch vụ
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
 															</div>
 														</div>
 													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Lãi/Lỗ thuần từ hoạt động dịch vụ
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
-															</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
 														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
 															</div>
 														</div>
 													</div>
@@ -1115,322 +1111,322 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-lg-6">
-										<canvas id="chartPreview4" class="chart-preview"></canvas>
-										<div class="chart-table">
-											<div class="chart-table_header">
-												<div class="chart-table_header__top">
-													<div class="chart-table_title">
-														Báo cáo tài chính theo quý
-													</div>
-													<div class="chart-table_list handleEffectTab">
-														<button type="button"
-														        class="chart-table_list__button handleEffectTabItem active">
-															Theo Quý
-														</button>
-														<button type="button"
-														        class="chart-table_list__button handleEffectTabItem">
-															Theo
-															Năm
-														</button>
-														<div class="chart-table_line handleEffectTabLine"></div>
-													</div>
+								</div>
+								<div class="col-lg-6">
+									<canvas id="chartPreview4" class="chart-preview"></canvas>
+									<div class="chart-table">
+										<div class="chart-table_header">
+											<div class="chart-table_header__top">
+												<div class="chart-table_title">
+													Báo cáo tài chính theo quý
 												</div>
-												<div class="chart-table_header__bottom">
-													<div class="chart-table_money">
-														Đơn vi: triệu đồng
+												<div class="chart-table_list handleEffectTab">
+													<button type="button"
+													        class="chart-table_list__button handleEffectTabItem active">
+														Theo Quý
+													</button>
+													<button type="button"
+													        class="chart-table_list__button handleEffectTabItem">
+														Theo
+														Năm
+													</button>
+													<div class="chart-table_line handleEffectTabLine"></div>
+												</div>
+											</div>
+											<div class="chart-table_header__bottom">
+												<div class="chart-table_money">
+													Đơn vi: triệu đồng
+												</div>
+												<div class="chart-table_time">
+													<button type="button"
+													        class="chart-table_time__button buttonPrev">
+														<svg xmlns="http://www.w3.org/2000/svg"
+														     viewBox="0 0 448 512">
+															<path
+																d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+														</svg>
+													</button>
+													<div class="chart-table_time__list">
+														<div class="chart-table_time__list___item">
+															<span>Quý 1/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 2/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 3/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
+														<div class="chart-table_time__list___item">
+															<span>Quý 4/2020</span>
+															<span>Hợp nhất/CKT</span>
+														</div>
 													</div>
-													<div class="chart-table_time">
-														<button type="button"
-														        class="chart-table_time__button buttonPrev">
-															<svg xmlns="http://www.w3.org/2000/svg"
-															     viewBox="0 0 448 512">
-																<path
-																		d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
-															</svg>
-														</button>
-														<div class="chart-table_time__list">
-															<div class="chart-table_time__list___item">
-																<span>Quý 1/2020</span>
-																<span>Hợp nhất/CKT</span>
+													<button type="button"
+													        class="chart-table_time__button buttonNext">
+														<svg xmlns="http://www.w3.org/2000/svg"
+														     viewBox="0 0 448 512">
+															<path
+																d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+														</svg>
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="chart-table_body">
+											<div class="chart-table_item">
+												<div class="chart-table_item__heading">
+													Kết quả kinh doanh
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Tổng thu nhập từ hoạt động kinh doanh
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 2/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																11,754,335
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 3/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																9,554,599
 															</div>
-															<div class="chart-table_time__list___item">
-																<span>Quý 4/2020</span>
-																<span>Hợp nhất/CKT</span>
+															<div class="chart-table_item__column">
+																11,611,198
 															</div>
 														</div>
-														<button type="button"
-														        class="chart-table_time__button buttonNext">
-															<svg xmlns="http://www.w3.org/2000/svg"
-															     viewBox="0 0 448 512">
-																<path
-																		d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
-															</svg>
-														</button>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Thu nhập lãi thuần
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
+															</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Lãi/Lỗ thuần từ hoạt động dịch vụ
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
+															</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
+															</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+													<div class="chart-table_item__sub">
+														<div class="chart-table_item__title">
+															Dự phòng rủi ro cho vay khách hàng
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
+															</div>
+															<div class="chart-table_item__column">
+																11,754,335
+															</div>
+															<div class="chart-table_item__column">
+																9,554,599
+															</div>
+															<div class="chart-table_item__column">
+																11,611,198
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
+															</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
-											<div class="chart-table_body">
-												<div class="chart-table_item">
-													<div class="chart-table_item__heading">
-														Kết quả kinh doanh
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Tổng thu nhập từ hoạt động kinh doanh
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
+											<div class="chart-table_item">
+												<div class="chart-table_item__heading">
+													Cân đối kế toán
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Tổng thu nhập từ hoạt động kinh doanh
 														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Thu nhập lãi thuần
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																13,419,696
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
+															<div class="chart-table_item__column">
+																11,754,335
 															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Lãi/Lỗ thuần từ hoạt động dịch vụ
+															<div class="chart-table_item__column">
+																9,554,599
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-														<div class="chart-table_item__sub">
-															<div class="chart-table_item__title">
-																Dự phòng rủi ro cho vay khách hàng
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
+															<div class="chart-table_item__column">
+																11,611,198
 															</div>
 														</div>
 													</div>
 												</div>
-												<div class="chart-table_item">
-													<div class="chart-table_item__heading">
-														Cân đối kế toán
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Tổng thu nhập từ hoạt động kinh doanh
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Thu nhập lãi thuần
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	13,419,696
-																</div>
-																<div class="chart-table_item__column">
-																	11,754,335
-																</div>
-																<div class="chart-table_item__column">
-																	9,554,599
-																</div>
-																<div class="chart-table_item__column">
-																	11,611,198
-																</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
 															</div>
 														</div>
 													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Thu nhập lãi thuần
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Lãi/Lỗ thuần từ hoạt động dịch vụ
+														</div>
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																9,477,926
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
+															<div class="chart-table_item__column">
+																8,928,676
+															</div>
+															<div class="chart-table_item__column">
+																8,601,817
+															</div>
+															<div class="chart-table_item__column">
+																8,305,393
 															</div>
 														</div>
 													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Lãi/Lỗ thuần từ hoạt động dịch vụ
-															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	9,477,926
-																</div>
-																<div class="chart-table_item__column">
-																	8,928,676
-																</div>
-																<div class="chart-table_item__column">
-																	8,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	8,305,393
-																</div>
-															</div>
+												</div>
+												<div class="chart-table_item__child">
+													<div class="chart-table_item__wrapper">
+														<div class="chart-table_item__title">
+															Chi phí hoạt động
 														</div>
-													</div>
-													<div class="chart-table_item__child">
-														<div class="chart-table_item__wrapper">
-															<div class="chart-table_item__title">
-																Chi phí hoạt động
+														<div class="chart-table_item__row">
+															<div class="chart-table_item__column">
+																-3,948,974
 															</div>
-															<div class="chart-table_item__row">
-																<div class="chart-table_item__column">
-																	-3,948,974
-																</div>
-																<div class="chart-table_item__column">
-																	-3,430,902
-																</div>
-																<div class="chart-table_item__column">
-																	-4,601,817
-																</div>
-																<div class="chart-table_item__column">
-																	-3,305,393
-																</div>
+															<div class="chart-table_item__column">
+																-3,430,902
+															</div>
+															<div class="chart-table_item__column">
+																-4,601,817
+															</div>
+															<div class="chart-table_item__column">
+																-3,305,393
 															</div>
 														</div>
 													</div>
@@ -1445,16 +1441,14 @@
 				</div>
 			</div>
 			<div class="section-gap_large">
-				<div class="container">
-					<div class="section-heading section-heading_small">
-						<div class="heading-title">
-							Website so sánh các mã cổ phiếu theo từng ngành nghề
-						</div>
-						<div class="heading-description">
-							<p>Thao tác website bắt dầu từ nút "Bắt đầu so sánh". Chart sẽ được chèn giữa nội dung này
-							   và form select ở trên
-							</p>
-						</div>
+				<div class="section-heading section-heading_small">
+					<div class="heading-title">
+						Website so sánh các mã cổ phiếu theo từng ngành nghề
+					</div>
+					<div class="heading-description">
+						<p>Thao tác website bắt dầu từ nút "Bắt đầu so sánh". Chart sẽ được chèn giữa nội dung này
+						   và form select ở trên
+						</p>
 					</div>
 				</div>
 			</div>

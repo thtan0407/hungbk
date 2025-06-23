@@ -7,10 +7,10 @@
 	const filterStock1 = $('#filterStock1');
 	const filterStock2 = $('#filterStock2');
 	const filterResult = $('#filterResult');
-
+	
 	const handleLoadPage = function () {
 		const pathJson = './assets/json/stock.json';
-
+		
 		$.getJSON(pathJson)
 			.done(function (data) {
 				if (Object.keys(data).length > 0) {
@@ -23,7 +23,7 @@
 						icon: "error",
 						title: "Có lỗi khi tải trang, vui lòng thử lại"
 					});
-
+					
 					setTimeout(() => window.location.reload(), 3000);
 				}
 			})
@@ -32,11 +32,11 @@
 					icon: "error",
 					title: "Có lỗi khi tải trang, vui lòng thử lại"
 				});
-
+				
 				setTimeout(() => window.location.reload(), 3000);
 			});
 	}
-
+	
 	const handleFilterSelect = function () {
 		filterIndustry.select2({
 			templateResult: function (data, container) {
@@ -51,7 +51,7 @@
 			width: '100%',
 			searchInputPlaceholder: filterIndustry.attr('data-search') ?? '',
 		});
-
+		
 		filterStock1.select2({
 			templateResult: function (data, container) {
 				if (data.element) {
@@ -65,7 +65,7 @@
 			width: '100%',
 			searchInputPlaceholder: filterStock1.attr('data-search') ?? '',
 		});
-
+		
 		filterStock2.select2({
 			templateResult: function (data, container) {
 				if (data.element) {
@@ -80,15 +80,15 @@
 			searchInputPlaceholder: filterStock2.attr('data-search') ?? '',
 		});
 	}
-
+	
 	const handleChangeIndustry = function () {
 		filterIndustry.change(() => {
 			if (filterIndustry.val() > 0 && dataIndustry[filterIndustry.val()] !== undefined) {
 				let optionStock = '<option value="-1">Chọn mã cổ phiếu</option>';
 				dataIndustry[filterIndustry.val()].map(function (item, idx) {
-					optionStock += `<option value="${item}">${item}</option>`;
+					optionStock += `<option value="${ item }">${ item }</option>`;
 				});
-
+				
 				filterStock1.html(optionStock).trigger('change.select2');
 				filterStock2.html(optionStock).trigger('change.select2');
 			} else {
@@ -96,47 +96,51 @@
 					icon: "error",
 					title: "Có lỗi khi tải trang, vui lòng thử lại"
 				});
-
+				
 				setTimeout(() => window.location.reload(), 3000);
 			}
 		})
 	}
-
+	
 	const handleSubmitCompare = function () {
 		$('#submitCompare').click(function () {
+			const buttonCompare = $(this);
+			
+			buttonCompare.prop('disabled', true);
+			
 			const filterIndustryValue = $('#filterIndustry').val();
 			const filterStock1Value = $('#filterStock1').val();
 			const filterStock2Value = $('#filterStock2').val();
-
+			
 			if (dataIndustry[filterIndustryValue] === undefined) {
 				Toast.fire({
 					icon: "error",
 					title: "Vui lòng chọn ngành nghề."
 				});
-
+				buttonCompare.prop('disabled', false);
 				return false;
 			}
-
+			
 			if (parseInt(filterStock1Value) === -1 || parseInt(filterStock2Value) === -1) {
 				Toast.fire({
 					icon: "error",
 					title: "Vui lòng chọn mã cổ phiếu. Lưu ý 2 mã cổ phiếu phải khác nhau"
 				});
-
+				buttonCompare.prop('disabled', false);
 				return false;
 			}
-
+			
 			if (filterStock1Value === filterStock2Value) {
 				Toast.fire({
 					icon: "error",
 					title: "Vui lòng chọn 2 mã cổ phiếu khác nhau."
 				});
-
+				buttonCompare.prop('disabled', false);
 				return false;
 			}
-
+			
 			const urlAPI = `http://20.89.170.203:8000/mapping-bctc`;
-
+			
 			fetch(urlAPI)
 				.then(response => response.json())
 				.then(data => {
@@ -150,20 +154,24 @@
 								background: arrColors[index % arrColors.length].background
 							}
 						});
-
+						$('#chartPreview').html('');
+						$('#chartPreview2').html('');
 						const fetchStock1 = handleRenderStock(filterIndustryValue, filterStock1Value, 'quy', '#chartPreview');
 						const fetchStock2 = handleRenderStock(filterIndustryValue, filterStock2Value, 'quy', '#chartPreview2');
+						
 						filterResult.show();
 						filterResult.find('.nameStock1').html(filterStock1Value);
 						filterResult.find('.nameStock2').html(filterStock2Value);
-
+						
 						handleInitialTab();
+						buttonCompare.prop('disabled', false);
 					} else {
 						Toast.fire({
 							icon: "error",
 							title: "Có lỗi xảy ra, vui lòng thử lại."
 						});
-
+						
+						buttonCompare.prop('disabled', false);
 						setTimeout(() => window.location.reload(), 3000);
 					}
 				})
@@ -172,14 +180,16 @@
 						icon: "error",
 						title: "Có lỗi xảy ra, vui lòng thử lại."
 					});
-					setTimeout(() => window.location.reload(), 3000);
+					console.error('Lỗi fetch:', error);
+					buttonCompare.prop('disabled', false);
+					//setTimeout(() => window.location.reload(), 3000);
 				});
 		});
 	}
-
+	
 	const handleRenderStock = (stockType, stockCode, chartType = 'quy', chartItem = '') => {
-		const urlAPI = `http://20.89.170.203:8000/stocks?stockCode=${stockCode}&stockType=${stockType}`;
-
+		const urlAPI = `http://20.89.170.203:8000/stocks?stockCode=${ stockCode }&stockType=${ stockType }`;
+		
 		fetch(urlAPI)
 			.then(response => response.json())
 			.then(data => {
@@ -190,7 +200,7 @@
 						icon: "error",
 						title: "Có lỗi xảy ra, vui lòng thử lại."
 					});
-
+					
 					setTimeout(() => window.location.reload(), 3000);
 				}
 			})
@@ -203,7 +213,7 @@
 				//setTimeout(() => window.location.reload(), 3000);
 			});
 	}
-
+	
 	const arrColors = [
 		{
 			borderColor: '#099444',
@@ -226,7 +236,7 @@
 			background: '#FFA0B4'
 		}
 	]
-
+	
 	const generateDataSets = (dataStock) => {
 		return chartFields.map(field => ({
 			label: field.label,
@@ -236,66 +246,35 @@
 			tension: 0.4
 		}));
 	}
-
+	
 	const generateLabels = (dataStock) => {
-		return dataStock.map(item => `Q${item.ky} - ${item.nam}`);
+		return dataStock.map(item => `Q${ item.ky } - ${ item.nam }`);
 	}
-
+	
 	const handleInitialChart = function (stockCode, stockValue, chartItem) {
 		const chart = $(chartItem);
 		if (chart.length) {
 			const chx = chart[0].getContext('2d');
-
+			
 			const labels = generateLabels(stockValue);
 			const dataSets = generateDataSets(stockValue);
-
+			
+			const divisor = 1_000_000_000;
+			
 			const allValues = dataSets.flatMap(ds => ds.data);
-			const minY = Math.min(...allValues);
-			const maxY = Math.max(...allValues);
-
-			const lineChart = new Chart(chx, {
+			const minY = Math.min(...allValues) / divisor;
+			const maxY = Math.max(...allValues) / divisor;
+			
+			const convertedDatasets = dataSets.map(ds => ({
+				...ds,
+				data: ds.data.map(val => val / divisor)
+			}));
+			
+			const chartInit = new Chart(chx, {
 				type: 'line',
 				data: {
 					labels: labels,
-					datasets: dataSets
-					/*labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-					datasets: [
-						{
-							label: "Tổng thu nhập từ hoạt động kinh doanh",
-							data: [30, 28, 24, 20],
-							borderColor: '#099444',
-							backgroundColor: '#82ffb8',
-							tension: 0.4
-						},
-						{
-							label: "Thu nhập lãi thuần",
-							data: [45, 20, 35, 50],
-							borderColor: '#0e6096',
-							backgroundColor: '#86cdff',
-							tension: 0.4
-						},
-						{
-							label: "Lãi/Lỗ thuần từ hoạt động dịch vụ",
-							data: [98, 28, 54, 90],
-							borderColor: '#FF4069',
-							backgroundColor: '#FFA0B4',
-							tension: 0.4
-						},
-						{
-							label: "Chi phí hoạt động",
-							data: [15, 78, 50, 20],
-							borderColor: '#FF9020',
-							backgroundColor: '#FFCF9F',
-							tension: 0.4
-						},
-						{
-							label: "Dự phòng rủi ro cho vay khách hàng",
-							data: [55, 30, 15, 80],
-							borderColor: '#9966FF',
-							backgroundColor: '#CCB2FF',
-							tension: 0.4
-						},
-					]*/
+					datasets: convertedDatasets
 				},
 				options: {
 					responsive: true,
@@ -311,6 +290,18 @@
 								},
 							},
 							position: 'bottom',
+						},
+						tooltip: {
+							callbacks: {
+								label: function (context) {
+									const label = context.dataset.label || '';
+									const value = context.parsed.y;
+									return `${ label }: ${ value.toLocaleString('en-US', {
+										minimumFractionDigits: 2,
+										maximumFractionDigits: 2
+									}) } tỷ`;
+								}
+							}
 						},
 						title: {
 							display: true,
@@ -333,15 +324,16 @@
 					},
 					scales: {
 						y: {
-							min: minY,
-							max: maxY,
+							min: minY.toLocaleString('en-US'),
+							max: maxY.toLocaleString('en-US'),
+							ticks: {
+								color: '#ffffff',
+								padding: 5,
+								callback: val => val.toLocaleString('en-US') + ' tỷ'
+							},
 							grid: {
 								color: '#2D2D2D',
 								drawTicks: false,
-							},
-							ticks: {
-								color: '#ffffff',
-								padding: 5
 							},
 						},
 						x: {
@@ -359,18 +351,18 @@
 			});
 		}
 	}
-
+	
 	const handleInitialTab = () => {
 		const tabElement = $('.handleEffectTab');
 		if (tabElement.length > 0) {
-
+			
 			tabElement.each(function () {
 				const tabItem = $(this);
-
+				
 				const tabItemBackground = tabItem.find('.handleEffectTabLine');
 				const tabItemButton = tabItem.find('.handleEffectTabItem');
 				const tabItemButtonActive = tabItem.find('.handleEffectTabItem.active')[0];
-
+				
 				if (tabItemButtonActive != null) {
 					setTimeout(() => {
 						tabItemBackground.css({
@@ -379,7 +371,7 @@
 							opacity: 1
 						});
 					}, 250)
-
+					
 					$(window).resize(function () {
 						tabItemBackground.css({
 							left: parseInt(tabItemButtonActive.offsetLeft) + "px",
@@ -387,18 +379,18 @@
 							opacity: 1
 						});
 					});
-
+					
 					setTimeout(function () {
 						tabItemButton.addClass('is-done');
 						tabItemBackground.addClass('transition-default')
 					}, 300)
-
+					
 					if (tabItemButton.length) {
 						tabItemButton.each(function () {
 							const tabElement = $(this);
 							tabElement.on("click", function () {
 								tabItemButton.removeClass("active");
-
+								
 								tabElement.addClass("active");
 								tabItemBackground.css({
 									left: parseInt(tabElement[0].offsetLeft) + "px",
@@ -412,7 +404,7 @@
 			})
 		}
 	}
-
+	
 	$(document).ready(function () {
 		handleLoadPage();
 	});
