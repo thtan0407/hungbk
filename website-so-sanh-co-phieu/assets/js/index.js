@@ -207,7 +207,7 @@
 			.catch(error => {
 				Toast.fire({
 					icon: "error",
-					title: error
+					title: "Có lỗi xảy ra, vui lòng thử lại."
 				});
 				console.error('Lỗi fetch:', error);
 				//setTimeout(() => window.location.reload(), 3000);
