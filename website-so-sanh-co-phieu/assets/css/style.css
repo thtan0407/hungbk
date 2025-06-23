@@ -757,6 +757,7 @@ body {
 
 	.section-filter .filter-item {
 		flex-direction: row;
+		align-items: center;
 	}
 
 	.section-filter .filter-item .filter-item_title {

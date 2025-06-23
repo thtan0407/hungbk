@@ -9,21 +9,21 @@
 	<meta property="og:site_name" content="So sánh cổ phiếu">
 	<meta name="description" content="So sánh cổ phiếu">
 	<meta name="author" content="So sánh cổ phiếu">
-	
+
 	<meta property="og:title" content="So sánh cổ phiếu">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="">
 	<meta property="og:description"
 	      content="So sánh cổ phiếu">
 	<meta property="og:image" content="">
-	
+
 	<link rel="icon" href="">
-	
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	      rel="stylesheet">
-	
+
 	<link rel="stylesheet" href="./assets/libs/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./assets/libs/select2/css/select2.min.css">
 	<link rel="stylesheet" href="./assets/libs/sweetalert2/sweetalert2.min.css">
@@ -111,13 +111,13 @@
 					<div class="section-chart">
 						<div class="chart-title">
 							So sánh số liệu báo cáo tài chính giữa <span class="nameStock1"></span> và <span
-							class="nameStock2"></span>
+								class="nameStock2"></span>
 						</div>
 						<div class="chart-button">
-							<button type="button" class="button-theme button-theme_sm active">
+							<button type="button" class="button-theme button-theme_sm active handleChangePeriod">
 								Theo quý
 							</button>
-							<button type="button" class="button-theme_secondary button-theme_sm">
+							<button type="button" class="button-theme_secondary button-theme_sm handleChangePeriod">
 								Theo năm
 							</button>
 						</div>
@@ -125,21 +125,20 @@
 							<div class="row g-4">
 								<div class="col-lg-6">
 									<canvas id="chartPreview" class="chart-preview"></canvas>
-									<div class="chart-table">
+									<div class="chart-table" id="tablePreview">
 										<div class="chart-table_header">
 											<div class="chart-table_header__top">
 												<div class="chart-table_title">
-													Báo cáo tài chính theo quý
+													Báo cáo tài chính theo <span class="tablePreviewPeriod">quý</span>
 												</div>
 												<div class="chart-table_list handleEffectTab">
 													<button type="button"
-													        class="chart-table_list__button handleEffectTabItem active">
+													        class="chart-table_list__button handleEffectTabItem active handleChangePeriod">
 														Theo Quý
 													</button>
 													<button type="button"
-													        class="chart-table_list__button handleEffectTabItem">
-														Theo
-														Năm
+													        class="chart-table_list__button handleEffectTabItem handleChangePeriod">
+														Theo Năm
 													</button>
 													<div class="chart-table_line handleEffectTabLine"></div>
 												</div>
@@ -154,7 +153,7 @@
 														<svg xmlns="http://www.w3.org/2000/svg"
 														     viewBox="0 0 448 512">
 															<path
-																d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+																	d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
 														</svg>
 													</button>
 													<div class="chart-table_time__list">
@@ -180,7 +179,7 @@
 														<svg xmlns="http://www.w3.org/2000/svg"
 														     viewBox="0 0 448 512">
 															<path
-																d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+																	d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
 														</svg>
 													</button>
 												</div>
@@ -448,21 +447,20 @@
 								</div>
 								<div class="col-lg-6">
 									<canvas id="chartPreview2" class="chart-preview"></canvas>
-									<div class="chart-table">
+									<div class="chart-table" id="tablePreview2">
 										<div class="chart-table_header">
 											<div class="chart-table_header__top">
 												<div class="chart-table_title">
-													Báo cáo tài chính theo quý
+													Báo cáo tài chính theo <span class="tablePreviewPeriod">quý</span>
 												</div>
 												<div class="chart-table_list handleEffectTab">
 													<button type="button"
-													        class="chart-table_list__button handleEffectTabItem active">
+													        class="chart-table_list__button handleEffectTabItem active handleChangePeriod">
 														Theo Quý
 													</button>
 													<button type="button"
-													        class="chart-table_list__button handleEffectTabItem">
-														Theo
-														Năm
+													        class="chart-table_list__button handleEffectTabItem handleChangePeriod">
+														Theo Năm
 													</button>
 													<div class="chart-table_line handleEffectTabLine"></div>
 												</div>
@@ -477,7 +475,7 @@
 														<svg xmlns="http://www.w3.org/2000/svg"
 														     viewBox="0 0 448 512">
 															<path
-																d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+																	d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
 														</svg>
 													</button>
 													<div class="chart-table_time__list">
@@ -503,7 +501,7 @@
 														<svg xmlns="http://www.w3.org/2000/svg"
 														     viewBox="0 0 448 512">
 															<path
-																d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+																	d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
 														</svg>
 													</button>
 												</div>
@@ -777,13 +775,13 @@
 					<div class="section-chart">
 						<div class="chart-title">
 							So sánh số liệu lưu chuyển tiền tiện tệ giữa <span class="nameStock1"></span> và <span
-							class="nameStock2"></span>
+								class="nameStock2"></span>
 						</div>
 						<div class="chart-button">
-							<button type="button" class="button-theme button-theme_sm active">
+							<button type="button" class="button-theme button-theme_sm active handleChangePeriod">
 								Theo quý
 							</button>
-							<button type="button" class="button-theme_secondary button-theme_sm">
+							<button type="button" class="button-theme_secondary button-theme_sm handleChangePeriod">
 								Theo năm
 							</button>
 						</div>
@@ -791,21 +789,20 @@
 							<div class="row g-4">
 								<div class="col-lg-6">
 									<canvas id="chartPreview3" class="chart-preview"></canvas>
-									<div class="chart-table">
+									<div class="chart-table" id="tablePreview3">
 										<div class="chart-table_header">
 											<div class="chart-table_header__top">
 												<div class="chart-table_title">
-													Báo cáo tài chính theo quý
+													Báo cáo tài chính theo <span class="tablePreviewPeriod">quý</span>
 												</div>
 												<div class="chart-table_list handleEffectTab">
 													<button type="button"
-													        class="chart-table_list__button handleEffectTabItem active">
+													        class="chart-table_list__button handleEffectTabItem active handleChangePeriod">
 														Theo Quý
 													</button>
 													<button type="button"
-													        class="chart-table_list__button handleEffectTabItem">
-														Theo
-														Năm
+													        class="chart-table_list__button handleEffectTabItem handleChangePeriod">
+														Theo Năm
 													</button>
 													<div class="chart-table_line handleEffectTabLine"></div>
 												</div>
@@ -820,7 +817,7 @@
 														<svg xmlns="http://www.w3.org/2000/svg"
 														     viewBox="0 0 448 512">
 															<path
-																d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+																	d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
 														</svg>
 													</button>
 													<div class="chart-table_time__list">
@@ -846,7 +843,7 @@
 														<svg xmlns="http://www.w3.org/2000/svg"
 														     viewBox="0 0 448 512">
 															<path
-																d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+																	d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
 														</svg>
 													</button>
 												</div>
@@ -1114,19 +1111,19 @@
 								</div>
 								<div class="col-lg-6">
 									<canvas id="chartPreview4" class="chart-preview"></canvas>
-									<div class="chart-table">
+									<div class="chart-table" id="tablePreview4">
 										<div class="chart-table_header">
 											<div class="chart-table_header__top">
 												<div class="chart-table_title">
-													Báo cáo tài chính theo quý
+													Báo cáo tài chính theo <span class="tablePreviewPeriod">quý</span>
 												</div>
 												<div class="chart-table_list handleEffectTab">
 													<button type="button"
-													        class="chart-table_list__button handleEffectTabItem active">
+													        class="chart-table_list__button handleEffectTabItem active handleChangePeriod">
 														Theo Quý
 													</button>
 													<button type="button"
-													        class="chart-table_list__button handleEffectTabItem">
+													        class="chart-table_list__button handleEffectTabItem handleChangePeriod">
 														Theo
 														Năm
 													</button>
@@ -1143,7 +1140,7 @@
 														<svg xmlns="http://www.w3.org/2000/svg"
 														     viewBox="0 0 448 512">
 															<path
-																d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
+																	d="M223.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L319.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L393.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34zm-192 34l136 136c9.4 9.4 24.6 9.4 33.9 0l22.6-22.6c9.4-9.4 9.4-24.6 0-33.9L127.9 256l96.4-96.4c9.4-9.4 9.4-24.6 0-33.9L201.7 103c-9.4-9.4-24.6-9.4-33.9 0l-136 136c-9.5 9.4-9.5 24.6-.1 34z"/>
 														</svg>
 													</button>
 													<div class="chart-table_time__list">
@@ -1169,7 +1166,7 @@
 														<svg xmlns="http://www.w3.org/2000/svg"
 														     viewBox="0 0 448 512">
 															<path
-																d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+																	d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
 														</svg>
 													</button>
 												</div>
