@@ -12,10 +12,10 @@
 	const filterStock1 = $('#filterStock1');
 	const filterStock2 = $('#filterStock2');
 	const filterResult = $('#filterResult');
-
+	
 	const handleLoadPage = function () {
 		const pathJson = './assets/json/stock.json';
-
+		
 		$.getJSON(pathJson)
 			.done(function (data) {
 				if (Object.keys(data).length > 0) {
@@ -28,7 +28,7 @@
 						icon: "error",
 						title: "Có lỗi khi tải trang, vui lòng thử lại"
 					});
-
+					
 					setTimeout(() => window.location.reload(), 3000);
 				}
 			})
@@ -37,11 +37,11 @@
 					icon: "error",
 					title: "Có lỗi khi tải trang, vui lòng thử lại"
 				});
-
+				
 				setTimeout(() => window.location.reload(), 3000);
 			});
 	}
-
+	
 	const handleFilterSelect = function () {
 		filterIndustry.select2({
 			templateResult: function (data, container) {
@@ -56,7 +56,7 @@
 			width: '100%',
 			searchInputPlaceholder: filterIndustry.attr('data-search') ?? '',
 		});
-
+		
 		filterStock1.select2({
 			templateResult: function (data, container) {
 				if (data.element) {
@@ -70,7 +70,7 @@
 			width: '100%',
 			searchInputPlaceholder: filterStock1.attr('data-search') ?? '',
 		});
-
+		
 		filterStock2.select2({
 			templateResult: function (data, container) {
 				if (data.element) {
@@ -85,15 +85,15 @@
 			searchInputPlaceholder: filterStock2.attr('data-search') ?? '',
 		});
 	}
-
+	
 	const handleChangeIndustry = function () {
 		filterIndustry.change(() => {
 			if (filterIndustry.val() > 0 && dataIndustry[filterIndustry.val()] !== undefined) {
 				let optionStock = '<option value="-1">Chọn mã cổ phiếu</option>';
 				dataIndustry[filterIndustry.val()].map(function (item, idx) {
-					optionStock += `<option value="${item}">${item}</option>`;
+					optionStock += `<option value="${ item }">${ item }</option>`;
 				});
-
+				
 				filterStock1.html(optionStock).trigger('change.select2');
 				filterStock2.html(optionStock).trigger('change.select2');
 			} else {
@@ -101,26 +101,26 @@
 					icon: "error",
 					title: "Có lỗi khi tải trang, vui lòng thử lại"
 				});
-
+				
 				setTimeout(() => window.location.reload(), 3000);
 			}
 		})
 	}
-
+	
 	const handleSubmitCompare = function () {
 		$('#submitCompare').click(function () {
 			const buttonCompare = $(this);
-
-			if(filterIndustryValue == $('#filterIndustry').val() && filterStock1Value == $('#filterStock1').val() && filterStock2Value == $('#filterStock2').val()) {
+			
+			if (filterIndustryValue == $('#filterIndustry').val() && filterStock1Value == $('#filterStock1').val() && filterStock2Value == $('#filterStock2').val()) {
 				return null;
 			}
-
+			
 			buttonCompare.prop('disabled', true);
-
+			
 			filterIndustryValue = $('#filterIndustry').val();
 			filterStock1Value = $('#filterStock1').val();
 			filterStock2Value = $('#filterStock2').val();
-
+			
 			if (dataIndustry[filterIndustryValue] === undefined) {
 				Toast.fire({
 					icon: "error",
@@ -129,7 +129,7 @@
 				buttonCompare.prop('disabled', false);
 				return false;
 			}
-
+			
 			if (parseInt(filterStock1Value) === -1 || parseInt(filterStock2Value) === -1) {
 				Toast.fire({
 					icon: "error",
@@ -138,7 +138,7 @@
 				buttonCompare.prop('disabled', false);
 				return false;
 			}
-
+			
 			if (filterStock1Value === filterStock2Value) {
 				Toast.fire({
 					icon: "error",
@@ -147,78 +147,83 @@
 				buttonCompare.prop('disabled', false);
 				return false;
 			}
-
+			
 			const urlAPI = `http://20.89.170.203:8000/mapping-bctc`;
-
+			
 			fetch(urlAPI)
 				.then(response => response.json())
 				.then(data => {
 					if (Object.keys(data).length > 0) {
 						mappingBCTC = data[filterIndustryValue];
-						chartFields = mappingBCTC.colunm_chart.map((key, index) => {
-							return {
-								key: key,
-								label: mappingBCTC.column_mapping[key] || key,
-								borderColor: arrColors[index % arrColors.length].borderColor,
-								background: arrColors[index % arrColors.length].background
-							}
-						});
-
-						handleRenderStock(filterIndustryValue, filterStock1Value, 'quy', '#chartPreview', chartPreview1)
-							.then(chart => {
-								if (chart) {
-									chartPreview1 = chart;
-									handleRenderTable()
-								}
-							});
-
-						handleRenderStock(filterIndustryValue, filterStock2Value, 'quy', '#chartPreview2', chartPreview2)
-							.then(chart => {
-								if (chart) {
-									chartPreview2 = chart;
-									handleRenderTable()
-								}
-							});
-
-						filterResult.show();
-						filterResult.find('.nameStock1').html(filterStock1Value);
-						filterResult.find('.nameStock2').html(filterStock2Value);
-
-						handleInitialTab();
-						buttonCompare.prop('disabled', false);
+						
+						chartFields = mappingBCTC.colunm_chart.map((key, index) => ({
+							key: key,
+							label: mappingBCTC.column_mapping[key] || key,
+							borderColor: arrColors[index % arrColors.length].borderColor,
+							background: arrColors[index % arrColors.length].background
+						}));
+						
+						// Gọi song song 2 cổ phiếu
+						return Promise.all([
+							handleRenderStock(filterIndustryValue, filterStock1Value, 'quy', '#chartPreview', chartPreview1),
+							handleRenderStock(filterIndustryValue, filterStock2Value, 'quy', '#chartPreview2', chartPreview2)
+						]);
 					} else {
-						Toast.fire({
-							icon: "error",
-							title: "Có lỗi xảy ra, vui lòng thử lại."
-						});
-
-						buttonCompare.prop('disabled', false);
-						setTimeout(() => window.location.reload(), 3000);
+						throw new Error("Dữ liệu cấu hình trống");
 					}
+				})
+				.then(([ rawData1, rawData2 ]) => {
+					if (!rawData1 || !rawData2) {
+						throw new Error("Thiếu dữ liệu biểu đồ");
+					}
+					
+					// Lưu chart để sử dụng sau này
+					chartPreview1 = rawData1.chart;
+					chartPreview2 = rawData2.chart;
+					
+					// Render bảng
+					handleRenderTable(rawData1.rawData, filterIndustryValue, filterStock1Value, 'quy', '#tablePreview');
+					handleRenderTable(rawData2.rawData, filterIndustryValue, filterStock2Value, 'quy', '#tablePreview2');
+					
+					// Cập nhật UI
+					filterResult.show();
+					filterResult.find('.nameStock1').html(filterStock1Value);
+					filterResult.find('.nameStock2').html(filterStock2Value);
+					
+					handleChangePeriod();
+					handleInitialTab();
+					buttonCompare.prop('disabled', false);
 				})
 				.catch(error => {
 					Toast.fire({
 						icon: "error",
-						title: "Có lỗi xảy ra, vui lòng thử lại."
+						title: "Đã xảy ra lỗi khi xử lý dữ liệu. Vui lòng thử lại!"
 					});
-					console.error('Lỗi fetch:', error);
+					console.error("Lỗi tổng:", error);
 					buttonCompare.prop('disabled', false);
-					//setTimeout(() => window.location.reload(), 3000);
+					setTimeout(() => window.location.reload(), 3000);
 				});
 		});
 	}
-
+	
 	const handleRenderStock = (stockType, stockCode, chartType = 'quy', chartItem = '', chartPreview) => {
-		const urlAPI = `http://20.89.170.203:8000/stocks?stockCode=${stockCode}&stockType=${stockType}`;
-
+		const urlAPI = `http://20.89.170.203:8000/stocks?stockCode=${ stockCode }&stockType=${ stockType }`;
+		
 		return fetch(urlAPI)
 			.then(response => {
-				if (!response.ok) throw new Error(`HTTP status ${response.status}`);
+				if (!response.ok) throw new Error(`HTTP status ${ response.status }`);
 				return response.json();
 			})
 			.then(data => {
 				if (data[chartType] && data[chartType].length > 0) {
-					return handleInitialChart(stockCode, data[chartType], chartItem, chartPreview);
+					const rawData = data[chartType];
+					const chart = handleInitialChart(stockCode, rawData, chartItem, chartPreview);
+					
+					return {
+						chart,
+						rawData
+					};
+					
 				} else {
 					Toast.fire({
 						icon: "error",
@@ -236,8 +241,7 @@
 				return null;
 			});
 	};
-
-
+	
 	const arrColors = [
 		{
 			borderColor: '#099444',
@@ -260,7 +264,7 @@
 			background: '#FFA0B4'
 		}
 	]
-
+	
 	const generateDataSets = (dataStock) => {
 		return chartFields.map(field => ({
 			label: field.label,
@@ -270,32 +274,32 @@
 			tension: 0.4
 		}));
 	}
-
+	
 	const generateLabels = (dataStock) => {
-		return dataStock.map(item => `Q${item.ky} - ${item.nam}`);
+		return dataStock.map(item => `Q${ item.ky } - ${ item.nam }`);
 	}
-
+	
 	const handleInitialChart = function (stockCode, stockValue, chartItem, chartPreview) {
 		const chart = $(chartItem);
 		if (!chart.length) return null;
-
-
+		
+		
 		const chx = chart[0].getContext('2d');
-
+		
 		const labels = generateLabels(stockValue);
 		const dataSets = generateDataSets(stockValue);
-
+		
 		const divisor = 1_000_000_000;
-
+		
 		const allValues = dataSets.flatMap(ds => ds.data);
 		const minY = Math.min(...allValues) / divisor;
 		const maxY = Math.max(...allValues) / divisor;
-
+		
 		const convertedDatasets = dataSets.map(ds => ({
 			...ds,
 			data: ds.data.map(val => val / divisor)
 		}));
-
+		
 		// Update lại chart nếu gọi từ lần 2
 		if (chartPreview && chartPreview instanceof Chart) {
 			chartPreview.data.labels = labels;
@@ -306,7 +310,7 @@
 			chartPreview.update();
 			return chartPreview;
 		}
-
+		
 		const chartInit = new Chart(chx, {
 			type: 'line',
 			data: {
@@ -333,10 +337,10 @@
 							label: function (context) {
 								const label = context.dataset.label || '';
 								const value = context.parsed.y;
-								return `${label}: ${value.toLocaleString('en-US', {
+								return `${ label }: ${ value.toLocaleString('en-US', {
 									minimumFractionDigits: 2,
 									maximumFractionDigits: 2
-								})} tỷ`;
+								}) } tỷ`;
 							}
 						}
 					},
@@ -386,21 +390,105 @@
 				}
 			}
 		});
-
+		
 		return chartInit
 	}
-
+	
+	const getLatestTime = (data, count = 4) => {
+		return data
+			.filter(item => item.nam && item.ky)
+			.sort((a, b) => {
+				if (b.nam !== a.nam) return b.nam - a.nam;
+				return b.ky - a.ky;
+			})
+			.slice(0, count);
+	};
+	
+	const formatNumber = function (val) {
+		if (val == null) return '-';
+		const num = Number(val);
+		if (isNaN(num)) return val;
+		let formattedNumber = (num / 1_000_000).toLocaleString('en-US', { maximumFractionDigits: 0 });
+		
+		if (formattedNumber === '-0') {
+			formattedNumber = '0';
+		}
+		
+		return formattedNumber;
+	};
+	
+	const handleRenderTable = function (data, stockType, stockCode, chartType, tablePreview) {
+		$(tablePreview + ' .tablePreviewPeriod').html(chartType === 'quy' ? "quý" : "năm");
+		
+		const sortedData = getLatestTime(data, 4);
+		
+		$(tablePreview + ' .tablePreviewTime').empty();
+		
+		sortedData.forEach(item => {
+			if (item.nam && item.ky) {
+				const $item = $(`
+				<div class="chart-table_time__list___item">
+					<span>Quý ${ item.ky }/${ item.nam }</span>
+					<span>Hợp nhất/CKT</span>
+				</div>
+			`);
+				$(tablePreview + ' .tablePreviewTime').append($item);
+			}
+		});
+		
+		$(tablePreview + ' .tablePreviewBody').empty();
+		let renderRow = `<div class="chart-table_item">
+												<div class="chart-table_item__heading">
+													Kết quả kinh doanh
+												</div>`;
+		
+		const columnMapping = mappingBCTC.column_mapping;
+		
+		const keysToShow = Object.keys(columnMapping).filter(key => ![ 'cp', 'nam', 'ky' ].includes(key));
+		
+		keysToShow.forEach(fieldKey => {
+			renderRow += `
+			<div class="chart-table_item__child">
+				<div class="chart-table_item__wrapper">
+					<div class="chart-table_item__title">${ columnMapping[fieldKey] }</div>
+					<div class="chart-table_item__row">`;
+			sortedData.forEach(item => {
+				const val = formatNumber(item[fieldKey]);
+				renderRow += `<div class="chart-table_item__column">${ val.toLocaleString('en-US') }</div>`;
+			});
+			renderRow += `
+					</div>
+				</div>
+			</div>
+		`;
+		});
+		
+		renderRow += `</div>`;
+		$(tablePreview + ' .tablePreviewBody').html(renderRow)
+	}
+	
+	const handleChangePeriod = function () {
+		const buttonChangePeriod = $('.handleChangePeriod');
+		if (!buttonChangePeriod.length) {
+			return false;
+		}
+		
+		buttonChangePeriod.click(function () {
+		
+		});
+	}
+	
 	const handleInitialTab = () => {
 		const tabElement = $('.handleEffectTab');
 		if (tabElement.length > 0) {
-
+			
 			tabElement.each(function () {
 				const tabItem = $(this);
-
+				
 				const tabItemBackground = tabItem.find('.handleEffectTabLine');
 				const tabItemButton = tabItem.find('.handleEffectTabItem');
 				const tabItemButtonActive = tabItem.find('.handleEffectTabItem.active')[0];
-
+				
 				if (tabItemButtonActive != null) {
 					setTimeout(() => {
 						tabItemBackground.css({
@@ -409,7 +497,7 @@
 							opacity: 1
 						});
 					}, 250)
-
+					
 					$(window).resize(function () {
 						tabItemBackground.css({
 							left: parseInt(tabItemButtonActive.offsetLeft) + "px",
@@ -417,18 +505,18 @@
 							opacity: 1
 						});
 					});
-
+					
 					setTimeout(function () {
 						tabItemButton.addClass('is-done');
 						tabItemBackground.addClass('transition-default')
 					}, 300)
-
+					
 					if (tabItemButton.length) {
 						tabItemButton.each(function () {
 							const tabElement = $(this);
 							tabElement.on("click", function () {
 								tabItemButton.removeClass("active");
-
+								
 								tabElement.addClass("active");
 								tabItemBackground.css({
 									left: parseInt(tabElement[0].offsetLeft) + "px",
@@ -442,7 +530,7 @@
 			})
 		}
 	}
-
+	
 	$(document).ready(function () {
 		handleLoadPage();
 	});
