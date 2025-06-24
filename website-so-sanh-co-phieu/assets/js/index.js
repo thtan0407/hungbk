@@ -444,6 +444,7 @@
 				return false;
 			}
 
+			const value = parseInt($(this).attr('data-value'));
 			let periodValue = parseInt($(this).attr('data-value')) === 2 ? 'nam' : 'quy';
 
 			buttonChangePeriod.removeClass('active button-theme').addClass('button-theme_secondary');
@@ -452,6 +453,24 @@
 			handleSubmitCompare(periodValue);
 
 			$('#submitCompare').attr('data-value', parseInt($(this).attr('data-value')))
+
+			$('.handleEffectTab').each(function () {
+				const tabBlock = $(this);
+				const tabButtons = tabBlock.find('.handleEffectTabItem');
+				const tabBackground = tabBlock.find('.handleEffectTabLine');
+				const targetTab = tabButtons.filter(`[data-value="${value}"]`);
+
+				if (targetTab.length) {
+					tabButtons.removeClass('active');
+					targetTab.addClass('active');
+
+					tabBackground.css({
+						left: targetTab[0].offsetLeft + "px",
+						width: targetTab[0].offsetWidth + "px",
+						opacity: 1
+					});
+				}
+			});
 		});
 	}
 
