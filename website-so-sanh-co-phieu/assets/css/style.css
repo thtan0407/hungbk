@@ -431,18 +431,19 @@ body {
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_money {
 	font-size: 12px;
-	width: 30%;
+	width: calc(30% - 25px / 2);
 	flex-shrink: 0;
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time {
 	position: relative;
-	width: 70%;
+	width: calc(70% - 25px / 2);
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list {
 	display: flex;
 	align-items: center;
+	justify-content: flex-end;
 	position: relative;
 	gap: 25px;
 }
@@ -476,6 +477,7 @@ body {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
+	transition: var(--transition-default);
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__button svg {
@@ -483,6 +485,7 @@ body {
 	height: 14px;
 	fill: #1aa67c;
 	transition: var(--transition-default);
+	opacity: 1;
 }
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__button.buttonPrev {
@@ -495,6 +498,11 @@ body {
 
 .chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__button:hover svg {
 	fill: #14936c;
+}
+
+.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__button:disabled svg {
+	fill: var(--color-text-secondary);
+	opacity: 0.5;
 }
 
 .chart-table .chart-table_body .chart-table_item .chart-table_item__heading {
@@ -535,6 +543,7 @@ body {
 	width: 70%;
 	display: flex;
 	align-items: center;
+	justify-content: flex-end;
 	position: relative;
 	gap: 25px;
 }
@@ -764,18 +773,40 @@ body {
 		font-size: 1em;
 		width: 40%;
 	}
+}
 
-	.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item:nth-last-of-type(1),
-	.chart-table .chart-table_body .chart-table_item .chart-table_item__column:nth-last-of-type(1) {
+@media screen and (max-width: 1199px) {
+	.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item,
+	.chart-table .chart-table_body .chart-table_item .chart-table_item__column {
 		display: none;
+	}
+
+	.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item:nth-of-type(1),
+	.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item:nth-of-type(2),
+	.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item:nth-of-type(3) {
+		display: flex;
+	}
+
+	.chart-table .chart-table_body .chart-table_item .chart-table_item__column:nth-of-type(1),
+	.chart-table .chart-table_body .chart-table_item .chart-table_item__column:nth-of-type(2),
+	.chart-table .chart-table_body .chart-table_item .chart-table_item__column:nth-of-type(3) {
+		display: block;
 	}
 }
 
 @media screen and (max-width: 575px) {
-	.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item:nth-last-of-type(1),
-	.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item:nth-last-of-type(2),
-	.chart-table .chart-table_body .chart-table_item .chart-table_item__column:nth-last-of-type(1),
-	.chart-table .chart-table_body .chart-table_item .chart-table_item__column:nth-last-of-type(2) {
-		display: none;
+	.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item,
+	.chart-table .chart-table_body .chart-table_item .chart-table_item__column {
+		display: none !important;
+	}
+
+	.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item:nth-of-type(1),
+	.chart-table .chart-table_header .chart-table_header__bottom .chart-table_time__list .chart-table_time__list___item:nth-of-type(2) {
+		display: flex !important;
+	}
+
+	.chart-table .chart-table_body .chart-table_item .chart-table_item__column:nth-of-type(1),
+	.chart-table .chart-table_body .chart-table_item .chart-table_item__column:nth-of-type(2) {
+		display: block !important;
 	}
 }
