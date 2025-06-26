@@ -11,7 +11,7 @@
 	let filterStock2Value = null
 	let period = 'quy';
 	let limit;
-	
+
 	const handleUpdateLimit = function () {
 		if (window.innerWidth <= 575) {
 			limit = 2;
@@ -21,14 +21,14 @@
 			limit = 4;
 		}
 	}
-	
+
 	handleUpdateLimit();
-	
+
 	const filterIndustry = $('#filterIndustry');
 	const filterStock1 = $('#filterStock1');
 	const filterStock2 = $('#filterStock2');
 	const filterResult = $('#filterResult');
-	
+
 	const arrColors = [
 		{
 			borderColor: '#099444',
@@ -51,20 +51,20 @@
 			background: '#FFA0B4'
 		}
 	]
-	
+
 	const formatNumber = function (val) {
 		if (val == null) return '-';
 		const num = Number(val);
 		if (isNaN(num)) return val;
-		let formattedNumber = (num / 1_000_000).toLocaleString('en-US', { maximumFractionDigits: 0 });
-		
+		let formattedNumber = (num / 1_000_000).toLocaleString('en-US', {maximumFractionDigits: 0});
+
 		if (formattedNumber === '-0') {
 			formattedNumber = '0';
 		}
-		
+
 		return formattedNumber;
 	};
-	
+
 	const generateDataSets = (dataStock) => {
 		return chartFields.map(field => ({
 			label: field.label,
@@ -74,18 +74,18 @@
 			tension: 0.4
 		}));
 	}
-	
+
 	const generateLabels = (dataStock, chartType) => {
 		if (chartType === 'nam') {
-			return dataStock.map(item => `Năm ${ item.nam }`);
+			return dataStock.map(item => `Năm ${item.nam}`);
 		} else {
-			return dataStock.map(item => `Q${ item.ky } - ${ item.nam }`);
+			return dataStock.map(item => `Q${item.ky} - ${item.nam}`);
 		}
 	}
-	
+
 	const handleLoadPage = function () {
 		const pathJson = './assets/json/stock.json';
-		
+
 		$.getJSON(pathJson)
 			.done(function (data) {
 				if (Object.keys(data).length > 0) {
@@ -97,7 +97,7 @@
 						icon: "error",
 						title: "Có lỗi khi tải trang, vui lòng thử lại"
 					});
-					
+
 					setTimeout(() => window.location.reload(), 3000);
 				}
 			})
@@ -106,11 +106,11 @@
 					icon: "error",
 					title: "Có lỗi khi tải trang, vui lòng thử lại"
 				});
-				
+
 				setTimeout(() => window.location.reload(), 3000);
 			});
 	}
-	
+
 	const handleFilterSelect = function () {
 		filterIndustry.select2({
 			templateResult: function (data, container) {
@@ -125,7 +125,7 @@
 			width: '100%',
 			searchInputPlaceholder: filterIndustry.attr('data-search') ?? '',
 		});
-		
+
 		filterStock1.select2({
 			templateResult: function (data, container) {
 				if (data.element) {
@@ -139,7 +139,7 @@
 			width: '100%',
 			searchInputPlaceholder: filterStock1.attr('data-search') ?? '',
 		});
-		
+
 		filterStock2.select2({
 			templateResult: function (data, container) {
 				if (data.element) {
@@ -154,15 +154,15 @@
 			searchInputPlaceholder: filterStock2.attr('data-search') ?? '',
 		});
 	}
-	
+
 	const handleChangeIndustry = function () {
 		filterIndustry.change(() => {
 			if (filterIndustry.val() > 0 && dataIndustry[filterIndustry.val()] !== undefined) {
 				let optionStock = '<option value="-1">Chọn mã cổ phiếu</option>';
 				dataIndustry[filterIndustry.val()].map(function (item, idx) {
-					optionStock += `<option value="${ item }">${ item }</option>`;
+					optionStock += `<option value="${item}">${item}</option>`;
 				});
-				
+
 				filterStock1.html(optionStock).trigger('change.select2');
 				filterStock2.html(optionStock).trigger('change.select2');
 			} else {
@@ -170,28 +170,28 @@
 					icon: "error",
 					title: "Có lỗi khi tải trang, vui lòng thử lại"
 				});
-				
+
 				setTimeout(() => window.location.reload(), 3000);
 			}
 		})
 	}
-	
+
 	const handleSubmitCompare = function (period, start = 0) {
 		const urlAPI = `http://20.89.170.203:8000/mapping-bctc`;
-		
+
 		fetch(urlAPI)
 			.then(response => response.json())
 			.then(data => {
 				if (Object.keys(data).length > 0) {
 					mappingBCTC = data[filterIndustryValue];
-					
+
 					chartFields = mappingBCTC.colunm_chart.map((key, index) => ({
 						key: key,
 						label: mappingBCTC.column_mapping[key] || key,
 						borderColor: arrColors[index % arrColors.length].borderColor,
 						background: arrColors[index % arrColors.length].background
 					}));
-					
+
 					// Gọi song song 2 cổ phiếu
 					return Promise.all([
 						handleRenderStock(filterIndustryValue, filterStock1Value, period, '#chartPreview', chartPreview1),
@@ -201,25 +201,25 @@
 					throw new Error("Dữ liệu cấu hình trống");
 				}
 			})
-			.then(([ dataChart1, dataChart2 ]) => {
+			.then(([dataChart1, dataChart2]) => {
 				if (!dataChart1 || !dataChart2) {
 					throw new Error("Thiếu dữ liệu biểu đồ");
 				}
-				
+
 				// Lưu chart để sử dụng sau này
 				chartPreview1 = dataChart1.chart;
 				chartPreview2 = dataChart2.chart;
-				
+
 				dataRaw = {
 					[filterStock1Value]: dataChart1.rawData,
 					[filterStock2Value]: dataChart2.rawData
 				};
-				
-				
+
+
 				// Render bảng
 				handleRenderTable(dataRaw[filterStock1Value], filterIndustryValue, filterStock1Value, period, '#tablePreview', start);
 				handleRenderTable(dataRaw[filterStock2Value], filterIndustryValue, filterStock2Value, period, '#tablePreview2', start);
-				
+
 				// Cập nhật UI
 				filterResult.show();
 				filterResult.find('.nameStock1').html(filterStock1Value);
@@ -238,25 +238,25 @@
 				setTimeout(() => window.location.reload(), 3000);
 			});
 	}
-	
+
 	const handleRenderStock = (stockType, stockCode, chartType = 'quy', chartItem = '', chartPreview) => {
-		const urlAPI = `http://20.89.170.203:8000/stocks?stockCode=${ stockCode }&stockType=${ stockType }`;
-		
+		const urlAPI = `http://20.89.170.203:8000/stocks?stockCode=${stockCode}&stockType=${stockType}`;
+
 		return fetch(urlAPI)
 			.then(response => {
-				if (!response.ok) throw new Error(`HTTP status ${ response.status }`);
+				if (!response.ok) throw new Error(`HTTP status ${response.status}`);
 				return response.json();
 			})
 			.then(data => {
 				if (data[chartType] && data[chartType].length > 0) {
 					const rawData = data[chartType];
 					const chart = handleInitialChart(stockCode, rawData, chartItem, chartType, chartPreview);
-					
+
 					return {
 						chart,
 						rawData
 					};
-					
+
 				} else {
 					Toast.fire({
 						icon: "error",
@@ -275,27 +275,27 @@
 				return null;
 			});
 	};
-	
+
 	const handleInitialChart = function (stockCode, stockValue, chartItem, chartType, chartPreview) {
 		const chart = $(chartItem);
 		if (!chart.length) return null;
-		
+
 		const chx = chart[0].getContext('2d');
-		
+
 		const labels = generateLabels(stockValue, chartType);
 		const dataSets = generateDataSets(stockValue);
-		
+
 		const divisor = 1_000_000_000;
-		
+
 		const allValues = dataSets.flatMap(ds => ds.data);
 		const minY = Math.min(...allValues) / divisor;
 		const maxY = Math.max(...allValues) / divisor;
-		
+
 		const convertedDatasets = dataSets.map(ds => ({
 			...ds,
 			data: ds.data.map(val => val / divisor)
 		}));
-		
+
 		// Update lại chart nếu gọi từ lần 2
 		if (chartPreview && chartPreview instanceof Chart) {
 			chartPreview.data.labels = labels;
@@ -306,7 +306,7 @@
 			chartPreview.update();
 			return chartPreview;
 		}
-		
+
 		const chartInit = new Chart(chx, {
 			type: 'line',
 			data: {
@@ -333,10 +333,10 @@
 							label: function (context) {
 								const label = context.dataset.label || '';
 								const value = context.parsed.y;
-								return `${ label }: ${ value.toLocaleString('en-US', {
+								return `${label}: ${value.toLocaleString('en-US', {
 									minimumFractionDigits: 2,
 									maximumFractionDigits: 2
-								}) } tỷ`;
+								})} tỷ`;
 							}
 						}
 					},
@@ -386,10 +386,10 @@
 				}
 			}
 		});
-		
+
 		return chartInit
 	}
-	
+
 	const getLatestTime = (data, chartType, startData = 0, limitData) => {
 		if (chartType === 'quy') {
 			return data
@@ -400,49 +400,49 @@
 				})
 				.slice(startData, limitData + startData);
 		} else {
-			const uniqueYears = [ ...new Set(
+			const uniqueYears = [...new Set(
 				data
 					.filter(item => item.nam)
 					.map(item => item.nam)
-			) ].sort((a, b) => b - a)
+			)].sort((a, b) => b - a)
 				.slice(startData, limitData + startData);
-			
+
 			return uniqueYears.map(year => data.find(item => item.nam === year));
 		}
 	};
-	
+
 	const handleRenderTable = function (data, stockType, stockCode, chartType, tablePreview, start, update = false) {
 		$(tablePreview + ' .tablePreviewPeriod').html(chartType === 'quy' ? "quý" : "năm");
-		
+
 		const sortedData = getLatestTime(data, chartType, start, limit);
-		
+
 		let renderItemTime = '';
 		sortedData.forEach(item => {
 			if (chartType === 'quy') {
 				if (item.nam && item.ky) {
 					renderItemTime += `<div class="chart-table_time__list___item">
-															<span>Quý ${ item.ky }/${ item.nam }</span>
+															<span>Quý ${item.ky}/${item.nam}</span>
 															<span>Hợp nhất/CKT</span>
 														</div>`;
 				}
 			} else {
 				if (item.nam) {
 					renderItemTime += `<div class="chart-table_time__list___item">
-															<span>Năm ${ item.nam }</span>
+															<span>Năm ${item.nam}</span>
 															<span>Hợp nhất/CKT</span>
 															</div>`;
 				}
 			}
 		});
-		
+
 		if (!update) {
 			$(tablePreview + ' .tablePreviewTime').empty();
 			$(tablePreview + ' .tablePreviewTime').html(`
-																							<div class="chart-table_time__list">${ renderItemTime }</div>
+																							<div class="chart-table_time__list">${renderItemTime}</div>
 																							<button type="button"
-																										data-stock="${ stockCode }"
+																										data-stock="${stockCode}"
 																						        data-start="1"
-																						        data-max="${ data.length }"
+																						        data-max="${data.length}"
 																						        class="chart-table_time__button buttonNext" disabled>
 																								<svg xmlns="http://www.w3.org/2000/svg"
 																								     viewBox="0 0 448 512">
@@ -454,9 +454,9 @@
 			$(tablePreview + ' .tablePreviewTime .chart-table_time__list').html(renderItemTime);
 			if (parseInt(data.length) - start > limit && $(tablePreview + ' .tablePreviewTime .buttonNext').length === 0) {
 				$(tablePreview + ' .tablePreviewTime .chart-table_time__list').after(`<button type="button"
-																										data-stock="${ stockCode }"
-																						        data-start="${ start + 1 }"
-																						        data-max="${ data.length }"
+																										data-stock="${stockCode}"
+																						        data-start="${start + 1}"
+																						        data-max="${data.length}"
 																						        class="chart-table_time__button buttonNext" disabled>
 																								<svg xmlns="http://www.w3.org/2000/svg"
 																								     viewBox="0 0 448 512">
@@ -465,12 +465,12 @@
 																								</svg>
 																							</button>`)
 			}
-			
+
 			if (start > 0 && $(tablePreview + ' .tablePreviewTime .buttonPrev').length === 0) {
 				$(tablePreview + ' .tablePreviewTime .chart-table_time__list').after(`<button type="button"
-																											data-stock="${ stockCode }"
-																							        data-start="${ start - 1 }"
-																							        data-max="${ data.length }"
+																											data-stock="${stockCode}"
+																							        data-start="${start - 1}"
+																							        data-max="${data.length}"
 																							        class="chart-table_time__button buttonPrev" disabled>
 																								<svg xmlns="http://www.w3.org/2000/svg"
 																								     viewBox="0 0 448 512">
@@ -480,26 +480,26 @@
 																							</button>`)
 			}
 		}
-		
+
 		$(tablePreview + ' .tablePreviewBody').empty();
 		let renderRow = `<div class="chart-table_item">
 												<div class="chart-table_item__heading">
 													Kết quả kinh doanh
 												</div>`;
-		
+
 		const columnMapping = mappingBCTC.column_mapping;
-		
-		const keysToShow = Object.keys(columnMapping).filter(key => ![ 'cp', 'nam', 'ky' ].includes(key));
-		
+
+		const keysToShow = Object.keys(columnMapping).filter(key => !['cp', 'nam', 'ky'].includes(key));
+
 		keysToShow.forEach(fieldKey => {
 			renderRow += `
 			<div class="chart-table_item__child">
 				<div class="chart-table_item__wrapper">
-					<div class="chart-table_item__title">${ columnMapping[fieldKey] }</div>
+					<div class="chart-table_item__title">${columnMapping[fieldKey]}</div>
 					<div class="chart-table_item__row">`;
 			sortedData.forEach(item => {
 				const val = formatNumber(item[fieldKey]);
-				renderRow += `<div class="chart-table_item__column">${ val.toLocaleString('en-US') }</div>`;
+				renderRow += `<div class="chart-table_item__column">${val.toLocaleString('en-US')}</div>`;
 			});
 			renderRow += `
 					</div>
@@ -507,11 +507,11 @@
 			</div>
 		`;
 		});
-		
+
 		renderRow += `</div>`;
 		$(tablePreview + ' .tablePreviewBody').html(renderRow);
 		$(tablePreview).attr('data-stock', stockCode)
-		
+
 		if (parseInt(data.length) - start <= limit) {
 			$(tablePreview + ' .tablePreviewTime .buttonNext').remove();
 		}
@@ -522,38 +522,38 @@
 		$(tablePreview + ' .tablePreviewTime .buttonPrev').prop('disabled', false)
 		handleChangeNextPrevPeriod();
 	}
-	
+
 	const handleChangePeriod = function () {
 		const buttonChangePeriod = $('.handleChangePeriod');
 		if (!buttonChangePeriod.length) {
 			return false;
 		}
-		
+
 		buttonChangePeriod.off().click(function () {
-			if ($(this).hasClass('active') || ![ 1, 2 ].includes(parseInt($(this).attr('data-value')))) {
+			if ($(this).hasClass('active') || ![1, 2].includes(parseInt($(this).attr('data-value')))) {
 				return false;
 			}
-			
+
 			const value = parseInt($(this).attr('data-value'));
 			period = parseInt($(this).attr('data-value')) === 2 ? 'nam' : 'quy';
-			
+
 			buttonChangePeriod.removeClass('active button-theme').addClass('button-theme_secondary');
 			$(this).addClass('active button-theme').removeClass('button-theme_secondary');
-			
+
 			handleSubmitCompare(period);
-			
+
 			$('#submitCompare').attr('data-value', parseInt($(this).attr('data-value')))
-			
+
 			$('.handleEffectTab').each(function () {
 				const tabBlock = $(this);
 				const tabButtons = tabBlock.find('.handleEffectTabItem');
 				const tabBackground = tabBlock.find('.handleEffectTabLine');
-				const targetTab = tabButtons.filter(`[data-value="${ value }"]`);
-				
+				const targetTab = tabButtons.filter(`[data-value="${value}"]`);
+
 				if (targetTab.length) {
 					tabButtons.removeClass('active');
 					targetTab.addClass('active');
-					
+
 					tabBackground.css({
 						left: targetTab[0].offsetLeft + "px",
 						width: targetTab[0].offsetWidth + "px",
@@ -563,51 +563,51 @@
 			});
 		});
 	}
-	
+
 	const handleChangeNextPrevPeriod = function () {
 		$('.buttonPrev').off().click(function () {
 			const startData = parseInt($(this).attr('data-start'));
-			
+
 			if (parseInt($(this).attr('data-max')) - startData - 1 < limit) {
 				return false;
 			}
-			
+
 			const stockCode = $(this).attr('data-stock');
 			const table = $(this).closest('.chart-table').attr('id');
-			
+
 			handleRenderTable(dataRaw[stockCode], filterIndustryValue, stockCode, period, '#' + table, startData, true);
-			
+
 			$(this).attr('data-start', startData - 1);
 			$(this).closest(".tablePreviewTime").find('.buttonNext').attr('data-start', startData + 1);
 		});
-		
+
 		$('.buttonNext').off().click(function () {
 			const startData = parseInt($(this).attr('data-start'));
-			
+
 			if (startData === 0 || parseInt($(this).attr('data-max')) - startData + 1 <= limit) {
 				return false;
 			}
-			
+
 			const stockCode = $(this).attr('data-stock');
 			const table = $(this).closest('.chart-table').attr('id');
 			handleRenderTable(dataRaw[stockCode], filterIndustryValue, stockCode, period, '#' + table, startData, true);
-			
+
 			$(this).attr('data-start', startData + 1);
 			$(this).closest(".tablePreviewTime").find('.buttonPrev').attr('data-start', startData - 1);
 		});
 	}
-	
+
 	const handleInitialTab = () => {
 		const tabElement = $('.handleEffectTab');
 		if (tabElement.length > 0) {
-			
+
 			tabElement.each(function () {
 				const tabItem = $(this);
-				
+
 				const tabItemBackground = tabItem.find('.handleEffectTabLine');
 				const tabItemButton = tabItem.find('.handleEffectTabItem');
 				const tabItemButtonActive = tabItem.find('.handleEffectTabItem.active')[0];
-				
+
 				if (tabItemButtonActive != null) {
 					setTimeout(() => {
 						tabItemBackground.css({
@@ -616,7 +616,7 @@
 							opacity: 1
 						});
 					}, 250)
-					
+
 					$(window).resize(function () {
 						tabItemBackground.css({
 							left: parseInt(tabItemButtonActive.offsetLeft) + "px",
@@ -624,42 +624,42 @@
 							opacity: 1
 						});
 					});
-					
+
 					setTimeout(function () {
 						tabItemButton.addClass('is-done');
 						tabItemBackground.addClass('transition-default')
 					}, 300)
-					
+
 					if (tabItemButton.length) {
 						tabItemButton.each(function () {
 							const clickedTab = $(this);
-							
+
 							clickedTab.on("click", function () {
 								if (clickedTab.hasClass('active')) return false;
-								
+
 								const value = clickedTab.attr('data-value');
-								
+
 								// ✅ Lặp qua tất cả các block tab
 								$('.handleEffectTab').each(function () {
 									const tabBlock = $(this);
 									const tabButtons = tabBlock.find('.handleEffectTabItem');
 									const tabBackground = tabBlock.find('.handleEffectTabLine');
-									const targetTab = tabButtons.filter(`[data-value="${ value }"]`);
-									
+									const targetTab = tabButtons.filter(`[data-value="${value}"]`);
+
 									if (!targetTab.length) return;
-									
+
 									tabButtons.removeClass('active');
 									targetTab.addClass('active');
-									
+
 									tabBackground.css({
 										left: targetTab[0].offsetLeft + "px",
 										width: targetTab[0].offsetWidth + "px",
 										opacity: 1
 									});
 								});
-								
+
 								// Gọi sự kiện change filter nếu cần
-								$(`.handleChangePeriod[data-value="${ value }"]`).trigger('click');
+								$(`.handleChangePeriod[data-value="${value}"]`).trigger('click');
 							});
 						});
 					}
@@ -667,7 +667,7 @@
 			})
 		}
 	}
-	
+
 	const filterCriteriaWaiting = $('#filterCriteriaWaiting');
 	const handleFilterCriteriaWaiting = function () {
 		filterCriteriaWaiting.select2({
@@ -684,7 +684,7 @@
 			searchInputPlaceholder: filterCriteriaWaiting.attr('data-search') ?? '',
 		});
 	}
-	
+
 	const filterCriteriaVolume = $('#filterCriteriaVolume');
 	const handleFilterCriteriaVolume = function () {
 		filterCriteriaVolume.select2({
@@ -701,42 +701,69 @@
 			searchInputPlaceholder: filterCriteriaVolume.attr('data-search') ?? '',
 		});
 	}
-	
+
 	const handleAccessTabs = function () {
 		const accessLogin = handleRedirectIsLogin(true);
-		
+		const buttonTabs = $('#buttonTabs .buttonTab');
+
+		if (!buttonTabs.length) return false
+
 		if (accessLogin) {
-			const arrTargetTabs = [ 'tabFilter', 'tabStockWaiting', 'tabStockVolume' ];
-			if ($('.buttonTab').length) {
-				$('.buttonTab').each(function (idx) {
-					$(this).attr({
-						'data-bs-target': '#' + arrTargetTabs[idx],
-						'data-bs-toggle': 'tab',
-					});
+			const arrTargetTabs = ['tabFilter', 'tabStockWaiting', 'tabStockVolume'];
+			$('#buttonTabs').attr('role', 'tablist')
+			buttonTabs.each(function (idx) {
+				$(this).attr({
+					'data-bs-target': '#' + arrTargetTabs[idx],
+					'data-bs-toggle': 'tab',
 				});
-			}
+			});
 		} else {
-		
+			$('#tabStockWaiting, #tabStockVolume').remove();
+			buttonTabs.attr('data-login', true)
+			$('#buttonTabs .buttonTab:nth-child(1)').attr('data-login', false)
+			buttonTabs.click(function () {
+				const button = $(this);
+				if (button.attr('data-login') === 'true') {
+					Swal.fire({
+						icon: 'warning',
+						title: 'Yêu cầu đăng nhập',
+						text: 'Bạn cần đăng nhập để sử dụng tính năng này.',
+						buttonsStyling: false,
+						showConfirmButton: true,
+						showCancelButton: true,
+						confirmButtonText: 'Đăng nhập',
+						cancelButtonText: 'Đóng',
+						customClass: {
+							confirmButton: 'button-theme button-theme_medium me-1',
+							cancelButton: 'button-theme_secondary button-theme_medium ms-1',
+						}
+					}).then((result) => {
+						if (result.isConfirmed) {
+							window.location.href = './sign-in.html';
+						}
+					});
+				}
+			});
 		}
 	}
-	
+
 	$(document).ready(function () {
 		handleAccessTabs();
 		handleLoadPage();
-		
+
 		$('#submitCompare').click(function () {
 			const buttonCompare = $(this);
-			
+
 			if (filterIndustryValue == $('#filterIndustry').val() && filterStock1Value == $('#filterStock1').val() && filterStock2Value == $('#filterStock2').val()) {
 				return null;
 			}
-			
+
 			buttonCompare.prop('disabled', true);
-			
+
 			filterIndustryValue = $('#filterIndustry').val();
 			filterStock1Value = $('#filterStock1').val();
 			filterStock2Value = $('#filterStock2').val();
-			
+
 			if (dataIndustry[filterIndustryValue] === undefined) {
 				Toast.fire({
 					icon: "error",
@@ -745,7 +772,7 @@
 				buttonCompare.prop('disabled', false);
 				return false;
 			}
-			
+
 			if (parseInt(filterStock1Value) === -1 || parseInt(filterStock2Value) === -1) {
 				Toast.fire({
 					icon: "error",
@@ -754,7 +781,7 @@
 				buttonCompare.prop('disabled', false);
 				return false;
 			}
-			
+
 			if (filterStock1Value === filterStock2Value) {
 				Toast.fire({
 					icon: "error",
@@ -766,11 +793,11 @@
 			period = parseInt(buttonCompare.attr('data-value')) === 2 ? 'nam' : 'quy';
 			handleSubmitCompare(period)
 		});
-		
+
 		$(window).on('resize', function () {
 			handleUpdateLimit(); // Cập nhật mỗi lần resize
 		});
-		
+
 		handleFilterCriteriaWaiting();
 		handleFilterCriteriaVolume();
 	});

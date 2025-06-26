@@ -98,6 +98,16 @@ body {
 	background: #444454;
 }
 
+.button-theme_secondary.active {
+	background: #1aa67c;
+}
+
+.button-theme_medium {
+	padding: 0.5rem 1rem;
+	font-size: 1em;
+	height: auto;
+}
+
 .button-theme_sm {
 	padding: 0.275rem 0.5rem;
 	height: 28px;
@@ -840,4 +850,14 @@ body {
 	.chart-table .chart-table_body .chart-table_item .chart-table_item__column:nth-of-type(2) {
 		display: block !important;
 	}
+}
+
+.swal2-title {
+	color: var(--bs-black);
+	font-size: 1.5em;
+}
+
+.swal2-html-container {
+	margin-top: .75em;
+	font-size: 1em;
 }

@@ -9,21 +9,21 @@
 	<meta property="og:site_name" content="So sánh cổ phiếu">
 	<meta name="description" content="So sánh cổ phiếu">
 	<meta name="author" content="So sánh cổ phiếu">
-	
+
 	<meta property="og:title" content="So sánh cổ phiếu">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="">
 	<meta property="og:description"
 	      content="So sánh cổ phiếu">
 	<meta property="og:image" content="">
-	
+
 	<link rel="icon" href="">
-	
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 	      rel="stylesheet">
-	
+
 	<link rel="stylesheet" href="./assets/libs/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./assets/libs/select2/css/select2.min.css">
 	<link rel="stylesheet" href="./assets/libs/sweetalert2/sweetalert2.min.css">
@@ -53,8 +53,8 @@
 	<div class="section-wrapper">
 		<div class="container">
 			<div class="section-tabs">
-				<div class="chart-button d-flex gap-2 justify-content-center align-items-center mb-4">
-					<button type="button" class="button-theme active buttonTab">
+				<div id="buttonTabs" class="chart-button d-flex gap-2 justify-content-center align-items-center mb-4" role="tablist">
+					<button type="button" class="button-theme_secondary active buttonTab">
 						So sánh cổ phiếu
 					</button>
 					<button type="button" class="button-theme_secondary buttonTab">
@@ -114,7 +114,7 @@
 							<div class="section-chart">
 								<div class="chart-title">
 									So sánh số liệu báo cáo tài chính giữa <span class="nameStock1"></span> và <span
-									class="nameStock2"></span>
+										class="nameStock2"></span>
 								</div>
 								<div class="chart-button">
 									<button type="button"
@@ -137,7 +137,7 @@
 													<div class="chart-table_header__top">
 														<div class="chart-table_title">
 															Báo cáo tài chính theo <span
-															class="tablePreviewPeriod">quý</span>
+																class="tablePreviewPeriod">quý</span>
 														</div>
 														<div class="chart-table_list handleEffectTab">
 															<button type="button"
@@ -166,7 +166,7 @@
 																<svg xmlns="http://www.w3.org/2000/svg"
 																     viewBox="0 0 448 512">
 																	<path
-																		d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+																			d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
 																</svg>
 															</button>
 														</div>
@@ -182,7 +182,7 @@
 													<div class="chart-table_header__top">
 														<div class="chart-table_title">
 															Báo cáo tài chính theo <span
-															class="tablePreviewPeriod">quý</span>
+																class="tablePreviewPeriod">quý</span>
 														</div>
 														<div class="chart-table_list handleEffectTab">
 															<button type="button"
@@ -212,7 +212,7 @@
 																<svg xmlns="http://www.w3.org/2000/svg"
 																     viewBox="0 0 448 512">
 																	<path
-																		d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+																			d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
 																</svg>
 															</button>
 														</div>
@@ -366,7 +366,7 @@
 													20%
 												</td>
 											</tr>
-											
+
 											<tr>
 												<td>
 													<strong>AAB</strong>
@@ -565,7 +565,7 @@
 													20%
 												</td>
 											</tr>
-											
+
 											<tr>
 												<td>
 													<strong>AAB</strong>
