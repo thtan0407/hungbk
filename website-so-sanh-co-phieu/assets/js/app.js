@@ -10,8 +10,11 @@ const Toast = Swal.mixin({
 	}
 });
 
-const handleRedirectIsLogin = () => {
+const handleRedirectIsLogin = (access = false) => {
 	const isLogin = localStorage.getItem('login');
+	
+	if(access) return isLogin;
+	
 	if (isLogin) {
 		location.href = './';
 	}

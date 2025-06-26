@@ -159,6 +159,10 @@ body {
 	gap: 6px;
 }
 
+.section-filter .filter-item.filter-item_small {
+	width: 33.33333%;
+}
+
 .section-filter .filter-item.filter-item_button {
 	width: auto;
 	max-width: calc(33.333333% - 15px);
@@ -586,6 +590,33 @@ body {
 	font-weight: 400;
 	font-style: italic;
 	color: var(--color-text-primary);
+}
+
+.section-table {
+	padding-top: 50px;
+}
+
+.table-theme .table {
+	--bs-table-bg: #201d2a;
+	--bs-table-color: var(--color-text-primary);
+	--bs-border-color: #262734;
+	font-size: 1em;
+}
+
+.table-theme .table tr th,
+.table-theme .table tr td {
+	padding: 16px;
+	width: 20%;
+}
+
+.table-theme .table tr th {
+	color: var(--bs-white);
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.table-theme .table tbody tr:nth-child(odd) td {
+	background: #1e1a26;
 }
 
 .page-account {

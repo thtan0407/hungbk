@@ -54,167 +54,571 @@
 		<div class="container">
 			<div class="section-tabs">
 				<div class="chart-button d-flex gap-2 justify-content-center align-items-center mb-4">
-					<button type="button" class="button-theme active">
+					<button type="button" class="button-theme active buttonTab">
 						So sánh cổ phiếu
 					</button>
-					<button type="button" class="button-theme_secondary">
+					<button type="button" class="button-theme_secondary buttonTab">
 						Cổ phiếu tích lũy chờ nổ
 					</button>
-					<butotn type="button" class="button-theme_secondary">
+					<button type="button" class="button-theme_secondary buttonTab">
 						Cổ phiếu khối lượng đột biến
-					</butotn>
-				</div>
-			</div>
-			<div class="section-filter">
-				<div class="filter-item">
-					<div class="filter-item_title">
-						Lựa chọn ngành nghề
-					</div>
-					<div class="filter-item_select">
-						<select name="" id="filterIndustry" data-search="Tìm kếm ngành nghề" data-wrapper>
-							<option value="-1" selected>Chọn ngành nghề</option>
-							<option value="1">Ngân hàng</option>
-							<option value="2">Chứng khoán</option>
-							<option value="3">Sản xuất, chế biến</option>
-							<option value="4">Bảo hiểm</option>
-						</select>
-					</div>
-				</div>
-				<div class="filter-item">
-					<div class="filter-item_title">
-						Chọn mã CP 1
-					</div>
-					<div class="filter-item_select">
-						<select name="" id="filterStock1" data-search="Tìm kếm mã cổ phiếu" data-wrapper>
-							<option value="-1">Chọn mã cổ phiếu</option>
-						</select>
-					</div>
-				</div>
-				<div class="filter-item">
-					<div class="filter-item_title">
-						Chọn mã CP 2
-					</div>
-					<div class="filter-item_select">
-						<select name="" id="filterStock2" data-search="Tìm kếm mã cổ phiếu" data-wrapper>
-							<option value="-1">Chọn mã cổ phiếu</option>
-						</select>
-					</div>
-				</div>
-				<div class="filter-item filter-item_button">
-					<button type="button" id="submitCompare"
-					        data-value="1" class="button-theme">
-						Bắt đầu so sánh
 					</button>
 				</div>
 			</div>
-			<div style="display: none" id="filterResult">
-				<div class="section-item">
-					<div class="section-chart">
-						<div class="chart-title">
-							So sánh số liệu báo cáo tài chính giữa <span class="nameStock1"></span> và <span
-							class="nameStock2"></span>
+			<div class="tab-content">
+				<div class="tab-pane fade active show" id="tabFilter">
+					<div class="section-filter">
+						<div class="filter-item">
+							<div class="filter-item_title">
+								Lựa chọn ngành nghề
+							</div>
+							<div class="filter-item_select">
+								<select name="" id="filterIndustry" data-search="Tìm kếm ngành nghề" data-wrapper>
+									<option value="-1" selected>Chọn ngành nghề</option>
+									<option value="1">Ngân hàng</option>
+									<option value="2">Chứng khoán</option>
+									<option value="3">Sản xuất, chế biến</option>
+									<option value="4">Bảo hiểm</option>
+								</select>
+							</div>
 						</div>
-						<div class="chart-button">
-							<button type="button"
-							        data-value="1"
-							        class="button-theme button-theme_sm active handleChangePeriod">
-								Theo quý
-							</button>
-							<button type="button"
-							        data-value="2"
-							        class="button-theme_secondary button-theme_sm handleChangePeriod">
-								Theo năm
+						<div class="filter-item">
+							<div class="filter-item_title">
+								Chọn mã CP 1
+							</div>
+							<div class="filter-item_select">
+								<select name="" id="filterStock1" data-search="Tìm kếm mã cổ phiếu" data-wrapper>
+									<option value="-1">Chọn mã cổ phiếu</option>
+								</select>
+							</div>
+						</div>
+						<div class="filter-item">
+							<div class="filter-item_title">
+								Chọn mã CP 2
+							</div>
+							<div class="filter-item_select">
+								<select name="" id="filterStock2" data-search="Tìm kếm mã cổ phiếu" data-wrapper>
+									<option value="-1">Chọn mã cổ phiếu</option>
+								</select>
+							</div>
+						</div>
+						<div class="filter-item filter-item_button">
+							<button type="button" id="submitCompare"
+							        data-value="1" class="button-theme">
+								Bắt đầu so sánh
 							</button>
 						</div>
-						<div class="chart-content">
-							<div class="row g-4">
-								<div class="col-lg-6">
-									<canvas id="chartPreview" class="chart-preview"></canvas>
-									<div class="chart-table" id="tablePreview">
-										<div class="chart-table_header">
-											<div class="chart-table_header__top">
-												<div class="chart-table_title">
-													Báo cáo tài chính theo <span class="tablePreviewPeriod">quý</span>
+					</div>
+					<div style="display: none" id="filterResult">
+						<div class="section-item">
+							<div class="section-chart">
+								<div class="chart-title">
+									So sánh số liệu báo cáo tài chính giữa <span class="nameStock1"></span> và <span
+									class="nameStock2"></span>
+								</div>
+								<div class="chart-button">
+									<button type="button"
+									        data-value="1"
+									        class="button-theme button-theme_sm active handleChangePeriod">
+										Theo quý
+									</button>
+									<button type="button"
+									        data-value="2"
+									        class="button-theme_secondary button-theme_sm handleChangePeriod">
+										Theo năm
+									</button>
+								</div>
+								<div class="chart-content">
+									<div class="row g-4">
+										<div class="col-lg-6">
+											<canvas id="chartPreview" class="chart-preview"></canvas>
+											<div class="chart-table" id="tablePreview">
+												<div class="chart-table_header">
+													<div class="chart-table_header__top">
+														<div class="chart-table_title">
+															Báo cáo tài chính theo <span
+															class="tablePreviewPeriod">quý</span>
+														</div>
+														<div class="chart-table_list handleEffectTab">
+															<button type="button"
+															        data-value="1"
+															        class="chart-table_list__button handleEffectTabItem active">
+																Theo Quý
+															</button>
+															<button type="button"
+															        data-value="2"
+															        class="chart-table_list__button handleEffectTabItem">
+																Theo Năm
+															</button>
+															<div class="chart-table_line handleEffectTabLine"></div>
+														</div>
+													</div>
+													<div class="chart-table_header__bottom">
+														<div class="chart-table_money">
+															Đơn vi: triệu đồng
+														</div>
+														<div class="chart-table_time tablePreviewTime">
+															<div class="chart-table_time__list"></div>
+															<button type="button"
+															        data-stock=""
+															        data-start="1"
+															        class="chart-table_time__button buttonNext">
+																<svg xmlns="http://www.w3.org/2000/svg"
+																     viewBox="0 0 448 512">
+																	<path
+																		d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+																</svg>
+															</button>
+														</div>
+													</div>
 												</div>
-												<div class="chart-table_list handleEffectTab">
-													<button type="button"
-													        data-value="1"
-													        class="chart-table_list__button handleEffectTabItem active">
-														Theo Quý
-													</button>
-													<button type="button"
-													        data-value="2"
-													        class="chart-table_list__button handleEffectTabItem">
-														Theo Năm
-													</button>
-													<div class="chart-table_line handleEffectTabLine"></div>
-												</div>
-											</div>
-											<div class="chart-table_header__bottom">
-												<div class="chart-table_money">
-													Đơn vi: triệu đồng
-												</div>
-												<div class="chart-table_time tablePreviewTime">
-													<div class="chart-table_time__list"></div>
-													<button type="button"
-													        data-stock=""
-													        data-start="1"
-													        class="chart-table_time__button buttonNext">
-														<svg xmlns="http://www.w3.org/2000/svg"
-														     viewBox="0 0 448 512">
-															<path
-																d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
-														</svg>
-													</button>
-												</div>
+												<div class="chart-table_body tablePreviewBody"></div>
 											</div>
 										</div>
-										<div class="chart-table_body tablePreviewBody"></div>
+										<div class="col-lg-6">
+											<canvas id="chartPreview2" class="chart-preview"></canvas>
+											<div class="chart-table" id="tablePreview2">
+												<div class="chart-table_header">
+													<div class="chart-table_header__top">
+														<div class="chart-table_title">
+															Báo cáo tài chính theo <span
+															class="tablePreviewPeriod">quý</span>
+														</div>
+														<div class="chart-table_list handleEffectTab">
+															<button type="button"
+															        data-stock=""
+															        data-value="1"
+															        class="chart-table_list__button handleEffectTabItem active">
+																Theo Quý
+															</button>
+															<button type="button"
+															        data-stock=""
+															        data-value="2"
+															        class="chart-table_list__button handleEffectTabItem">
+																Theo Năm
+															</button>
+															<div class="chart-table_line handleEffectTabLine"></div>
+														</div>
+													</div>
+													<div class="chart-table_header__bottom">
+														<div class="chart-table_money">
+															Đơn vi: triệu đồng
+														</div>
+														<div class="chart-table_time tablePreviewTime">
+															<div class="chart-table_time__list"></div>
+															<button type="button"
+															        data-start="1"
+															        class="chart-table_time__button buttonNext">
+																<svg xmlns="http://www.w3.org/2000/svg"
+																     viewBox="0 0 448 512">
+																	<path
+																		d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
+																</svg>
+															</button>
+														</div>
+													</div>
+												</div>
+												<div class="chart-table_body tablePreviewBody"></div>
+											</div>
+										</div>
 									</div>
 								</div>
-								<div class="col-lg-6">
-									<canvas id="chartPreview2" class="chart-preview"></canvas>
-									<div class="chart-table" id="tablePreview2">
-										<div class="chart-table_header">
-											<div class="chart-table_header__top">
-												<div class="chart-table_title">
-													Báo cáo tài chính theo <span class="tablePreviewPeriod">quý</span>
-												</div>
-												<div class="chart-table_list handleEffectTab">
-													<button type="button"
-													        data-stock=""
-													        data-value="1"
-													        class="chart-table_list__button handleEffectTabItem active">
-														Theo Quý
-													</button>
-													<button type="button"
-													        data-stock=""
-													        data-value="2"
-													        class="chart-table_list__button handleEffectTabItem">
-														Theo Năm
-													</button>
-													<div class="chart-table_line handleEffectTabLine"></div>
-												</div>
-											</div>
-											<div class="chart-table_header__bottom">
-												<div class="chart-table_money">
-													Đơn vi: triệu đồng
-												</div>
-												<div class="chart-table_time tablePreviewTime">
-													<div class="chart-table_time__list"></div>
-													<button type="button"
-													        data-start="1"
-													        class="chart-table_time__button buttonNext">
-														<svg xmlns="http://www.w3.org/2000/svg"
-														     viewBox="0 0 448 512">
-															<path
-																d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z"/>
-														</svg>
-													</button>
-												</div>
-											</div>
-										</div>
-										<div class="chart-table_body tablePreviewBody"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="tabStockWaiting">
+					<div class="section-filter">
+						<div class="filter-item filter-item_small">
+							<div class="filter-item_title">
+								Chọn tiêu chí lọc
+							</div>
+							<div class="filter-item_select">
+								<select name="" id="filterCriteriaWaiting" data-search="Tìm kiếm tiêu chí" data-wrapper>
+									<option value="-1" selected>Chọn tiêu chí lọc</option>
+									<option value="1">Tăng trưởng doanh thu</option>
+									<option value="2">Tăng trưởng lợi nhuận</option>
+									<option value="3">EPS cao nhất</option>
+								</select>
+							</div>
+						</div>
+						<div class="filter-item filter-item_button">
+							<button type="button" id="submitFilterCriteria" class="button-theme">
+								Bắt đầu lọc
+							</button>
+						</div>
+					</div>
+					<div class="section-item">
+						<div class="section-table">
+							<div class="row justify-content-center">
+								<div class=" col-xl-10 col-12">
+									<div class="table-responsive table-theme">
+										<table class="table table-bordered">
+											<thead>
+											<tr>
+												<th>Mã CP</th>
+												<th class="text-center">P/E</th>
+												<th class="text-center">EPS</th>
+												<th class="text-center">Tăng trưởng doanh thu</th>
+												<th class="text-center">Tăng trưởng lợi nhuận</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane fade" id="tabStockVolume">
+					<div class="section-filter">
+						<div class="filter-item filter-item_small">
+							<div class="filter-item_title">
+								Chọn tiêu chí lọc
+							</div>
+							<div class="filter-item_select">
+								<select name="" id="filterCriteriaVolume" data-search="Tìm kiếm tiêu chí" data-wrapper>
+									<option value="-1" selected>Chọn tiêu chí lọc</option>
+									<option value="1">Tăng trưởng doanh thu</option>
+									<option value="2">Tăng trưởng lợi nhuận</option>
+									<option value="3">EPS cao nhất</option>
+								</select>
+							</div>
+						</div>
+						<div class="filter-item filter-item_button">
+							<button type="button" id="submitFilterStockVolume" class="button-theme">
+								Bắt đầu lọc
+							</button>
+						</div>
+					</div>
+					<div class="section-item">
+						<div class="section-table">
+							<div class="row justify-content-center">
+								<div class=" col-xl-10 col-12">
+									<div class="table-responsive table-theme">
+										<table class="table table-bordered">
+											<thead>
+											<tr>
+												<th>Mã CP</th>
+												<th class="text-center">P/E</th>
+												<th class="text-center">EPS</th>
+												<th class="text-center">Tăng trưởng doanh thu</th>
+												<th class="text-center">Tăng trưởng lợi nhuận</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<strong>AAB</strong>
+												</td>
+												<td class="text-center">
+													12
+												</td>
+												<td class="text-center">
+													11.7
+												</td>
+												<td class="text-center">
+													13%
+												</td>
+												<td class="text-center">
+													20%
+												</td>
+											</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>
